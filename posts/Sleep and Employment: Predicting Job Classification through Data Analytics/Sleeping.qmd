@@ -95,6 +95,7 @@ sleep = pd.read_csv(file_path)
 
 ```
 
+
 ```{ipython}
 import pandas as pd
 import seaborn as sns
@@ -113,6 +114,9 @@ correlation_matrix = numerical_data.corr()
 ax = sns.heatmap(correlation_matrix, annot=True, cmap="PuOr");
 fig = ax.get_figure()
 ```
+
+![](figure7.png)
+
 
 ## Correlation of Numeric Variables
 
@@ -135,6 +139,9 @@ fig = ax.get_figure()
 plt.title('Correlation Matrix of Selected Features')
 plt.show()
 ```
+
+![](figure_1.png)
+
 
 ## Occupation By The Numbers
 
@@ -168,6 +175,9 @@ def occupation_group(row):
 sleep["Occupation_Group"] = sleep.apply(occupation_group, axis=1)
 ```
 
+![](figure8.png)
+
+
 ## Look at distribution based on Age
 
 ```{ipython}
@@ -185,6 +195,8 @@ ax.set_xlabel('Age')
 ax.set_ylabel('Frequency')
 plt.show()
 ```
+
+Figure_2.png)
 
 ## Stress Level
 
@@ -219,6 +231,7 @@ plt.show()
 #Figure out who is 8.5?
 ```
 
+![](figure_3.png)
 ## Quality of Sleep
 
 ```{ipython}
@@ -233,6 +246,8 @@ sleep.groupby('Quality of Sleep').agg(
 ).reset_index()
 ```
 
+![](figure9.png)
+
 ## Gender
 
 ```{ipython}
@@ -246,6 +261,8 @@ sleep.groupby('Gender').agg(
     num_occ=('Gender', 'size')
 ).reset_index()
 ```
+
+![](figure10.png)
 
 ```{ipython}
 import pandas as pd
@@ -266,24 +283,8 @@ pivot_data = pivot_data.reset_index()
 pivot_data
 ```
 
-```{ipython}
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-file_path = '/Users/Shared/Python/Sleep_health_and_lifestyle_dataset.csv'
-sleep = pd.read_csv(file_path)
+![](figure11.png)
 
-grouped_data = sleep.groupby(['Stress Level', 'Occupation']).size().reset_index(name='n')
-
-# Pivot the data to get 'Gender' as columns and 'Occupation' as index
-pivot_data = grouped_data.pivot(index='Occupation', columns='Stress Level', values='n').fillna(0)
-
-# Rename the columns and reset the index
-pivot_data.columns.name = None
-pivot_data = pivot_data.reset_index()
-
-pivot_data
-```
 
 ```{ipython}
 import pandas as pd
@@ -310,6 +311,8 @@ plt.ylabel("Occupation")
 plt.show()
 ```
 
+![](figure_4.png)
+
 ```{ipython}
 import pandas as pd
 import seaborn as sns
@@ -332,6 +335,8 @@ plt.ylabel('Stress Level')
 plt.title('Heatmap of Quality of Sleep vs. Stress Level')
 plt.show()
 ```
+
+![](figure_6.png)
 
 ## Machine Learning
 
@@ -507,6 +512,7 @@ plt.show()
 
 ```
 
+![](figure_5.png)
 ## Summary
 
 This study delved into the relationship between sleep patterns, job classification, and other relevant factors to accurately predict job roles. By leveraging data analytics and machine learning techniques, we aimed to optimize workforce planning and develop personalized workplace strategies.
