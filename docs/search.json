@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
-    "section": "",
-    "text": "This is a post with executable code.\n\n\nShow the code\n1 + 1\n\n\n[1] 2"
-  },
-  {
     "objectID": "posts/Billboard's Top 100 (2000)/bill.html",
     "href": "posts/Billboard's Top 100 (2000)/bill.html",
     "title": "Billboard Top 100’s in 2000",
@@ -166,13 +159,6 @@
     "title": "Expected Population Growth (Inspired by TidyTuesday dataset)",
     "section": "Conclusion",
     "text": "Conclusion\nThe analysis provides insights into the expected population growth across various regions and countries. By leveraging interactive visualizations, trend analysis, and comparative studies, we can better understand the global population dynamics and prepare for future demographic shifts.\nFeel free to explore the interactive elements and delve deeper into the analysis"
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
   },
   {
     "objectID": "posts/Country Migration/sank.html",
@@ -466,13 +452,41 @@
     "href": "index.html",
     "title": "CorDarryl Hall’s Data Portfolio",
     "section": "",
-    "text": "Analysis of Math Students in Oregon\n\n\n\nData Science\n\n\nData Analysis\n\n\nData Visualization\n\n\nStatistical Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBillboard Top 100’s in 2000\n\n\n\nTime Series Analysis\n\n\nData Analysis\n\n\nData Science\n\n\nData Visualization\n\n\nTrend Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCountry Migration\n\n\n\nData Visualization\n\n\nInteractive Visualization\n\n\nSankey Diagrams\n\n\nData Analysis\n\n\nData Science\n\n\nStatistical Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExpected Population Growth (Inspired by TidyTuesday dataset)\n\n\n\nData Visualization\n\n\nStatistical Analysis\n\n\nData Science\n\n\nData Analysis\n\n\nInteractive Analytics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHuman Resources Analytics Dashboard\n\n\n\nPower BI\n\n\nData Visualization\n\n\nKPI Analysis\n\n\nHR Analytics\n\n\nEmployee Retention\n\n\nTurnover Analysis\n\n\nData-Driven Decision Making\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLabor Utilization Dashboard\n\n\n\nPower BI\n\n\nData Visualization\n\n\nKPI Analysis\n\n\nHR Analytics\n\n\nEmployee Retention\n\n\nTurnover Analysis\n\n\nData-Driven Decision Making\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNetflix Survival Analysis\n\n\n\nData Analysis\n\n\nContent Strategy\n\n\nSurvival Analysis\n\n\nData Visualization\n\n\nPredictive Modeling\n\n\nData Science\n\n\nAudience Segmentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOffer Analysis Dashboard\n\n\n\nPower BI\n\n\nData Visualization\n\n\nKPI Analysis\n\n\nHR Analytics\n\n\nEmployee Retention\n\n\nTurnover Analysis\n\n\nData-Driven Decision Making\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHarlow Malloc\n\n\nMay 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSleep and Employment: Predicting Job Classification through Data Analytics\n\n\n\nPython\n\n\nData Analysis\n\n\nData Science\n\n\nData Visualization\n\n\nTrend Analysis\n\n\nMachine Learning\n\n\nRandom Forest Classification\n\n\nSVM Classifier\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSurvival Analysis of Game of Thrones Characters\n\n\n\nSurvival Analysis\n\n\nGame of Thrones\n\n\nNarrative Analysis\n\n\nStatistical Modeling\n\n\nData Visualization\n\n\nCox Proportional Hazards Model\n\n\nKaplan-Meier Estimator\n\n\nRisk Analysis\n\n\nStorytelling Insights\n\n\nPlot Dynamics\n\n\nThematic Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\nTristan O’Malley\n\n\nMay 28, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWine & Feature Engineering\n\n\n\nMachine Learning\n\n\nData Analysis\n\n\nData Science\n\n\nFeature Engineering\n\n\nPredictive Modeling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Analysis of Math Students in Oregon\n\n\n\nData Science\n\n\nData Analysis\n\n\nData Visualization\n\n\nStatistical Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBillboard Top 100’s in 2000\n\n\n\nTime Series Analysis\n\n\nData Analysis\n\n\nData Science\n\n\nData Visualization\n\n\nTrend Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCountry Migration\n\n\n\nData Visualization\n\n\nInteractive Visualization\n\n\nSankey Diagrams\n\n\nData Analysis\n\n\nData Science\n\n\nStatistical Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExpected Population Growth (Inspired by TidyTuesday dataset)\n\n\n\nData Visualization\n\n\nStatistical Analysis\n\n\nData Science\n\n\nData Analysis\n\n\nInteractive Analytics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHuman Resources Analytics Dashboard\n\n\n\nPower BI\n\n\nData Visualization\n\n\nKPI Analysis\n\n\nHR Analytics\n\n\nEmployee Retention\n\n\nTurnover Analysis\n\n\nData-Driven Decision Making\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLabor Utilization Dashboard\n\n\n\nPower BI\n\n\nData Visualization\n\n\nKPI Analysis\n\n\nHR Analytics\n\n\nEmployee Retention\n\n\nTurnover Analysis\n\n\nData-Driven Decision Making\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNetflix Survival Analysis\n\n\n\nData Analysis\n\n\nContent Strategy\n\n\nSurvival Analysis\n\n\nData Visualization\n\n\nPredictive Modeling\n\n\nData Science\n\n\nAudience Segmentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOffer Analysis Dashboard\n\n\n\nPower BI\n\n\nData Visualization\n\n\nKPI Analysis\n\n\nHR Analytics\n\n\nEmployee Retention\n\n\nTurnover Analysis\n\n\nData-Driven Decision Making\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSleep and Employment: Predicting Job Classification through Data Analytics\n\n\n\nPython\n\n\nData Analysis\n\n\nData Science\n\n\nData Visualization\n\n\nTrend Analysis\n\n\nMachine Learning\n\n\nRandom Forest Classification\n\n\nSVM Classifier\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSurvival Analysis of Game of Thrones Characters\n\n\n\nSurvival Analysis\n\n\nGame of Thrones\n\n\nNarrative Analysis\n\n\nStatistical Modeling\n\n\nData Visualization\n\n\nCox Proportional Hazards Model\n\n\nKaplan-Meier Estimator\n\n\nRisk Analysis\n\n\nStorytelling Insights\n\n\nPlot Dynamics\n\n\nThematic Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWine & Feature Engineering\n\n\n\nMachine Learning\n\n\nData Analysis\n\n\nData Science\n\n\nFeature Engineering\n\n\nPredictive Modeling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "CorDarryl E. Hall",
     "section": "",
-    "text": "About this blog"
+    "text": "CorDarryl E. Hall is a Senior Business Analyst/Program Manager at Lam Research. When not innovating on how to improve his data/program management techniques, CorDarryl enjoy various hobbies such as chess, architecture, and skydiving, and spending time with his two dogs."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "CorDarryl E. Hall",
+    "section": "Education",
+    "text": "Education\n\nWillamette University | Portland, OR\nMaster of Data Science | August 2023\n\n\nWillamette University | Portland, OR\nMaster of Business Administration | August 2019\n\n\nUniversity of Arizona | Tucson, AZ\nB.S in Business Administration | December 2011"
+  },
+  {
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "CorDarryl E. Hall",
+    "section": "Experience",
+    "text": "Experience\n\nLam Research\nSenior Business Analyst/Program Manager\nFebruary 2022 - present\n\n\nIntel Corporation\nSenior Operations Program Manager\nMay 2018 - February 2022\n\n\nU.S.Navy\nMachinist/Logistics Specialist\nSeptember 2012 - June 2020"
+  },
+  {
+    "objectID": "about.html#skills-certifications",
+    "href": "about.html#skills-certifications",
+    "title": "CorDarryl E. Hall",
+    "section": "Skills & Certifications",
+    "text": "Skills & Certifications\n\nTechnical Skills\nSQL, Python, DAX, R, SAP, Power BI, Tableau, Microsoft 365 Office Suite, Smartsheet, Lucid Planner\n\n\nCertifications\nPGMP (Program Management Certification), Scrum Master\n\n\nCredentials\nMBA, Master of Data Science\n\n\nSoft Skills\nStrategic Planning, Program Management, Team Leadership, Data Analysis, Visualization, Communication, Stakeholder Management"
+  },
+  {
+    "objectID": "about.html#about-me",
+    "href": "about.html#about-me",
+    "title": "CorDarryl E. Hall",
+    "section": "About Me",
+    "text": "About Me\nAs a Business Analyst and Program Manager, I am seeking new opportunities in Program Management where I can leverage my expertise in data analytics to provide strategic insights. My extensive experience includes serving as an Operations Program Manager, where I successfully led multi-disciplinary projects, coordinated stakeholders, and drove operational excellence. I have effectively managed the execution of strategic engineering objectives using tools such as Smartsheet and Lucid Planner, resulting in significant achievements like increasing Intel NUC device production from $4 million to $6 million over 10 years and orchestrating collaboration among 13 cross-functional teams to achieve a 27% revenue increase over three quarters. At Lam Research, I excelled in leading technical collaborations that resulted in a new contract management system and optimizing workflows to enhance business efficacy by 44%.\nIn my roles, I have showcased my proficiency in managing intricate compensation data processes and reporting at both Lam Research and Intel Corporation. I utilized tools like Power BI and Tableau and developed dashboards using languages such as R, Python, and SQL. As a Program Manager at Intel, I led a team to achieve record-breaking milestones in product introductions. My background also includes serving in the United States Navy, where I managed extensive equipment inventories and led multiple deployments. Additionally, I hold an MBA from Willamette University, where I consulted for the Boys & Girls Club, saving them over $500K.\nI am enthusiastic about discussing how I can contribute to your company’s success and look forward to potential collaborations."
   }
 ]
