@@ -49,11 +49,53 @@
     "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
   },
   {
+    "objectID": "posts/Wine /Wine.html",
+    "href": "posts/Wine /Wine.html",
+    "title": "Wine & Feature Engineering",
+    "section": "",
+    "text": "In this analysis, we will generate a comprehensive set of 10 features derived from the wine dataset, which includes the points feature. Through the process of feature engineering, we will select and transform variables to create meaningful features that enhance the predictive power of our model. This involves consolidating similar categories using functions like fct_lump and ensuring that our dataset is clean by removing any rows with missing values. Additionally, we will transform the price variable into its logarithmic form (log(price)) to stabilize the variance and normalize the distribution, facilitating a more effective linear regression model.\n\n\nShow the code\nknitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)\nlibrary(tidyverse)\nlibrary(caret)\nlibrary(fastDummies)\nwine = read_rds(\"/Users/Shared/Data 505/wine.rds\")"
+  },
+  {
+    "objectID": "posts/Wine /Wine.html#feature-engineering",
+    "href": "posts/Wine /Wine.html#feature-engineering",
+    "title": "Wine & Feature Engineering",
+    "section": "Feature Engineering",
+    "text": "Feature Engineering\nSummary\nIn this section, we will create a total of 10 features, including the points feature, from the wine dataset. We will also remove all rows that contain any missing values to ensure the data is clean and complete. Finally, we will transform the price into its logarithmic form and ensure that only the log-transformed price (log(price)) and the selected features remain in the final dataframe, which we will call wino.\n\n\nShow the code\nwino <- wine %>%\n  mutate(lprice = log(price)) %>%\n  mutate(country = fct_lump(country, 5),\n         taster_name = fct_lump(taster_name, 5),\n         variety = fct_lump(variety, 5),\n         winery = fct_lump(winery, 5),\n         region_1 = fct_lump(region_1, 5),\n         province = fct_lump(province, 5),\n         designation = fct_lump(designation, 5)) %>%\n  select(lprice, points, country, taster_name, variety, winery, region_1, province, designation) %>%\n  drop_na()"
+  },
+  {
+    "objectID": "posts/Wine /Wine.html#model-training-with-caret",
+    "href": "posts/Wine /Wine.html#model-training-with-caret",
+    "title": "Wine & Feature Engineering",
+    "section": "Model Training with Caret",
+    "text": "Model Training with Caret\nSummary\nThis section focuses on using the Caret library to partition the wino dataframe into an 80% training set and a 20% test set. We will perform a linear regression with bootstrap resampling and report the Root Mean Squared Error (RMSE) for the model on the test set. The bootstrap method involves resampling with replacement, which helps in estimating the accuracy of the model.\n\n\nShow the code\nset.seed(504)\nwine_index <- createDataPartition(wino$lprice, p = 0.8, list = FALSE)\nwino_tr <- wino[wine_index, ]\nwino_te <- wino[-wine_index, ]\n\ncontrol <- trainControl(method = \"boot\", number = 5)\nm1 <- train(lprice ~ ., \n            data = wino_tr, \n            method = \"lm\",\n            trControl = control)\n\nprint(m1$resample)\n\n\n       RMSE  Rsquared       MAE  Resample\n1 0.4716720 0.4639796 0.3669938 Resample1\n2 0.4735139 0.4531511 0.3691902 Resample2\n3 0.4682085 0.4532082 0.3652813 Resample3\n4 0.4724564 0.4578321 0.3690610 Resample4\n5 0.4718331 0.4647390 0.3683953 Resample5\n\n\nShow the code\nwine_pred <- predict(m1, wino_te)\npostResample(pred = wine_pred, obs = wino_te$lprice)\n\n\n     RMSE  Rsquared       MAE \n0.4716279 0.4453607 0.3677621"
+  },
+  {
+    "objectID": "posts/Wine /Wine.html#variable-selection",
+    "href": "posts/Wine /Wine.html#variable-selection",
+    "title": "Wine & Feature Engineering",
+    "section": "Variable Selection",
+    "text": "Variable Selection\nSummary\nIn this section, we will identify and visualize the importance of the selected features in our model. The goal is to understand which features have the most significant impact on predicting the log-transformed price of the wine.\n\n\nShow the code\nimportance <- varImp(m1, scale = TRUE)\nplot(importance)"
+  },
+  {
+    "objectID": "posts/Wine /Wine.html#data-partition",
+    "href": "posts/Wine /Wine.html#data-partition",
+    "title": "Wine & Feature Engineering",
+    "section": "Data Partition",
+    "text": "Data Partition\nSummary\nTo ensure reproducibility, we will set the seed to 504 before partitioning the data into training and test sets. We will aim to achieve an RMSE on the test data of less than 0.47 for 1 point, less than 0.46 for 2 points, or less than 0.45 for 3 points. This ensures that the model’s performance is both robust and reproducible.\n\n\nShow the code\nset.seed(504)\nwine_pred <- predict(m1, wino_te)\npostResample(pred = wine_pred, obs = wino_te$lprice)\n\n\n     RMSE  Rsquared       MAE \n0.4716279 0.4453607 0.3677621"
+  },
+  {
+    "objectID": "posts/Wine /Wine.html#conclusion",
+    "href": "posts/Wine /Wine.html#conclusion",
+    "title": "Wine & Feature Engineering",
+    "section": "Conclusion:",
+    "text": "Conclusion:\nThis presentation demonstrated the process of feature engineering, model training using the Caret library, and evaluating the model’s performance. Key steps included creating features, handling missing data, partitioning the dataset, and assessing the model using RMSE. The importance of reproducibility in data partitioning and model evaluation was emphasized through the use of set.seed."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "CorDarryl Hall’s Data Portfolio",
     "section": "",
-    "text": "Billboard Top 100’s in 2000\n\n\n\nTime Series Analysis\n\n\nData Analysis\n\n\nData Science\n\n\nData Visualization\n\n\nTrend Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHarlow Malloc\n\n\nMay 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\nTristan O’Malley\n\n\nMay 28, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Billboard Top 100’s in 2000\n\n\n\nTime Series Analysis\n\n\nData Analysis\n\n\nData Science\n\n\nData Visualization\n\n\nTrend Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHarlow Malloc\n\n\nMay 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\nTristan O’Malley\n\n\nMay 28, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWine & Feature Engineering\n\n\n\nMachine Learning\n\n\nData Analysis\n\n\nData Science\n\n\nFeature Engineering\n\n\nPredictive Modeling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
