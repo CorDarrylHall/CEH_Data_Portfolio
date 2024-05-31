@@ -1,6 +1,19 @@
 ---
 title: "CorDarryl Hall's Data Portfolio"
+format:
+  html:
+    includes:
+      in-header:
+        text: |
+          <!-- Google tag (gtag.js) -->
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHP4L2N0TE"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
+            gtag('config', 'G-RHP4L2N0TE');
+          </script>
 listing:
   type: grid
   contents: posts
@@ -11,6 +24,7 @@ listing:
 page-layout: article
 title-block-banner: false
 ---
+
 
 ```{=html}
 <style>

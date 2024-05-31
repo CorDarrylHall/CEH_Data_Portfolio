@@ -389,7 +389,7 @@
     "href": "posts/Sleep and Employment: Predicting Job Classification through Data Analytics/Sleeping.html#look-at-distribution-based-on-age",
     "title": "Sleep and Employment: Predicting Job Classification through Data Analytics",
     "section": "Look at distribution based on Age",
-    "text": "Look at distribution based on Age\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfile_path = '/Users/Shared/Python/Sleep_health_and_lifestyle_dataset.csv'\nsleep = pd.read_csv(file_path)\n\n# Look at the distribution based on Age\nfig, ax = plt.subplots(figsize=(10, 5))\nax.hist(sleep['Age'], bins=15)\nax.set_title('Distribution of Ages')\nax.set_xlabel('Age')\nax.set_ylabel('Frequency')\nplt.show()\nFigure_2.png)"
+    "text": "Look at distribution based on Age\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfile_path = '/Users/Shared/Python/Sleep_health_and_lifestyle_dataset.csv'\nsleep = pd.read_csv(file_path)\n\n# Look at the distribution based on Age\nfig, ax = plt.subplots(figsize=(10, 5))\nax.hist(sleep['Age'], bins=15)\nax.set_title('Distribution of Ages')\nax.set_xlabel('Age')\nax.set_ylabel('Frequency')\nplt.show()"
   },
   {
     "objectID": "posts/Sleep and Employment: Predicting Job Classification through Data Analytics/Sleeping.html#stress-level",
@@ -403,7 +403,7 @@
     "href": "posts/Sleep and Employment: Predicting Job Classification through Data Analytics/Sleeping.html#sleep-duration",
     "title": "Sleep and Employment: Predicting Job Classification through Data Analytics",
     "section": "Sleep Duration",
-    "text": "Sleep Duration\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfile_path = '/Users/Shared/Python/Sleep_health_and_lifestyle_dataset.csv'\nsleep = pd.read_csv(file_path)\n\n# Look at the distribution based on Age\nfig, ax = plt.subplots(figsize=(10, 5))\nax.hist(sleep['Sleep Duration'], bins=20)\nax.set_title('Distribution of Sleep Duration')\nax.set_xlabel('Sleep Duration')\nax.set_ylabel('Frequency')\nplt.show()\n#Figure out who is 8.5?\n ## Quality of Sleep\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfile_path = '/Users/Shared/Python/Sleep_health_and_lifestyle_dataset.csv'\nsleep = pd.read_csv(file_path)\n\nsleep.groupby('Quality of Sleep').agg(\n    num_individuals=('Quality of Sleep', 'size')\n).reset_index()"
+    "text": "Sleep Duration\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfile_path = '/Users/Shared/Python/Sleep_health_and_lifestyle_dataset.csv'\nsleep = pd.read_csv(file_path)\n\n# Look at the distribution based on Age\nfig, ax = plt.subplots(figsize=(10, 5))\nax.hist(sleep['Sleep Duration'], bins=20)\nax.set_title('Distribution of Sleep Duration')\nax.set_xlabel('Sleep Duration')\nax.set_ylabel('Frequency')\nplt.show()\n#Figure out who is 8.5?"
   },
   {
     "objectID": "posts/Sleep and Employment: Predicting Job Classification through Data Analytics/Sleeping.html#gender",
@@ -509,5 +509,12 @@
     "title": "CorDarryl E. Hall",
     "section": "About Me",
     "text": "About Me\nAs a Business Analyst and Program Manager, I am seeking new opportunities in Program Management where I can leverage my expertise in data analytics to provide strategic insights. My extensive experience includes serving as an Operations Program Manager, where I successfully led multi-disciplinary projects, coordinated stakeholders, and drove operational excellence. I have effectively managed the execution of strategic engineering objectives using tools such as Smartsheet and Lucid Planner, resulting in significant achievements like increasing Intel NUC device production from $4 million to $6 million over 10 years and orchestrating collaboration among 13 cross-functional teams to achieve a 27% revenue increase over three quarters. At Lam Research, I excelled in leading technical collaborations that resulted in a new contract management system and optimizing workflows to enhance business efficacy by 44%.\nIn my roles, I have showcased my proficiency in managing intricate compensation data processes and reporting at both Lam Research and Intel Corporation. I utilized tools like Power BI and Tableau and developed dashboards using languages such as R, Python, and SQL. As a Program Manager at Intel, I led a team to achieve record-breaking milestones in product introductions. My background also includes serving in the United States Navy, where I managed extensive equipment inventories and led multiple deployments. Additionally, I hold an MBA from Willamette University, where I consulted for the Boys & Girls Club, saving them over $500K.\nI am enthusiastic about discussing how I can contribute to your company’s success and look forward to potential collaborations."
+  },
+  {
+    "objectID": "posts/Sleep and Employment: Predicting Job Classification through Data Analytics/Sleeping.html#quality-of-sleep",
+    "href": "posts/Sleep and Employment: Predicting Job Classification through Data Analytics/Sleeping.html#quality-of-sleep",
+    "title": "Sleep and Employment: Predicting Job Classification through Data Analytics",
+    "section": "Quality of Sleep",
+    "text": "Quality of Sleep\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfile_path = '/Users/Shared/Python/Sleep_health_and_lifestyle_dataset.csv'\nsleep = pd.read_csv(file_path)\n\nsleep.groupby('Quality of Sleep').agg(\n    num_individuals=('Quality of Sleep', 'size')\n).reset_index()"
   }
 ]
