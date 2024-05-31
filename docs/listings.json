@@ -4,12 +4,27 @@
     "items": []
   },
   {
+    "listing": "/posts/Labor Utilization Dashboard/powerbila.html",
+    "items": []
+  },
+  {
+    "listing": "/posts/Offer Analysis Dashboard/powerbi.html",
+    "items": []
+  },
+  {
     "listing": "/index.html",
     "items": [
+      "/posts/Oregon Math Analysis/ORMATH.html",
       "/posts/Billboard's Top 100 (2000)/bill.html",
+      "/posts/Country Migration/sank.html",
+      "/posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html",
       "/posts/Human Resource Analytics Dashboard/powerbilhr.html",
+      "/posts/Labor Utilization Dashboard/powerbila.html",
+      "/posts/Netflix Survival Analysis/Netflix Survival.html",
+      "/posts/Offer Analysis Dashboard/powerbi.html",
       "/posts/post-with-code/index.html",
       "/posts/Sleep and Employment: Predicting Job Classification through Data Analytics/Sleeping.html",
+      "/posts/GoT (Game of Thrones) Analysis/GoT.html",
       "/posts/welcome/index.html",
       "/posts/Wine /Wine.html"
     ]

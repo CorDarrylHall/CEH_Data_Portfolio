@@ -42,6 +42,41 @@
     "text": "Conclusion\nThis analysis provides a clear view of the songs that dominated the Billboard Top 100 charts in the year 2000. By identifying the tracks that remained at #1 the longest, we can better understand the music trends and preferences of that time. This type of analysis can be expanded to include other years or additional chart metrics to gain further insights into the evolution of popular music."
   },
   {
+    "objectID": "posts/GoT (Game of Thrones) Analysis/GoT.html",
+    "href": "posts/GoT (Game of Thrones) Analysis/GoT.html",
+    "title": "Survival Analysis of Game of Thrones Characters",
+    "section": "",
+    "text": "This survival analysis was conducted on a Game of Thrones dataset to analyze the expected survival time of characters. The analysis includes visualizing the survival probability by initial allegiance and whether the characters switched allegiances."
+  },
+  {
+    "objectID": "posts/GoT (Game of Thrones) Analysis/GoT.html#dataset-overview",
+    "href": "posts/GoT (Game of Thrones) Analysis/GoT.html#dataset-overview",
+    "title": "Survival Analysis of Game of Thrones Characters",
+    "section": "Dataset Overview",
+    "text": "Dataset Overview\nThe dataset contains information about Game of Thrones characters, including their allegiance, survival time, and whether they switched allegiances.\n\n\nShow the code\n# Load necessary libraries and dataset\nlibrary(tidyverse)\n\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.4.0     ✔ purrr   1.0.0\n✔ tibble  3.2.1     ✔ dplyr   1.1.1\n✔ tidyr   1.2.1     ✔ stringr 1.5.0\n✔ readr   2.1.3     ✔ forcats 0.5.2\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\n\nShow the code\nlibrary(lubridate)\n\n\nLoading required package: timechange\n\nAttaching package: 'lubridate'\n\nThe following objects are masked from 'package:base':\n\n    date, intersect, setdiff, union\n\n\nShow the code\nlibrary(survival)\nlibrary(survminer)\n\n\nLoading required package: ggpubr\n\nAttaching package: 'survminer'\n\nThe following object is masked from 'package:survival':\n\n    myeloma\n\n\nShow the code\nthePath <- \"/Users/Shared/Survival Analysis/Got_dataset\"\nds <- read_csv(paste(thePath, \"character_data_S01-S08.csv\", sep = \"/\"))\n\n\nNew names:\nRows: 359 Columns: 41\n── Column specification\n──────────────────────────────────────────────────────── Delimiter: \",\" chr\n(8): name, dth_description, icd10_dx_code, icd10_dx_text, icd10_cause_c... dbl\n(27): id, sex, religion, occupation, social_status, allegiance_last, all... lgl\n(6): ...36, ...37, ...38, ...39, ...40, ...41\nℹ Use `spec()` to retrieve the full column specification for this data. ℹ\nSpecify the column types or set `show_col_types = FALSE` to quiet this message.\n• `` -> `...36`\n• `` -> `...37`\n• `` -> `...38`\n• `` -> `...39`\n• `` -> `...40`\n• `` -> `...41`"
+  },
+  {
+    "objectID": "posts/GoT (Game of Thrones) Analysis/GoT.html#survival-analysis-by-allegiance",
+    "href": "posts/GoT (Game of Thrones) Analysis/GoT.html#survival-analysis-by-allegiance",
+    "title": "Survival Analysis of Game of Thrones Characters",
+    "section": "Survival Analysis by Allegiance",
+    "text": "Survival Analysis by Allegiance\n\nCharacters Loyal to Their Allegiances\n\n\nShow the code\n# Filter data for characters loyal to their allegiances\ncharacter_ds_2_1 <- ds %>%\n  filter(allegiance_switched == 1 & allegiance_last %in% 1:4)\n\n# Fit survival model\nno_switch <- survfit(Surv(character_ds_2_1$exp_time_hrs, character_ds_2_1$dth_flag) ~ character_ds_2_1$allegiance_last)\n\n# Plot survival curves\nsurv_loyal <- ggsurvplot(fit = no_switch, data = character_ds_2_1,\n                         legend = \"bottom\", \n                         legend.title = \"Allegiance\",\n                         legend.labs = c(\"Stark\", \"Targaryen\", \"Night's Watch\", \"Lannister\"),\n                         risk.table = F, conf.int = F) +\n              labs(title = \"Survival of Characters Loyal to Their Allegiances\",\n                   x = \"Time in Hours\")\nsurv_loyal\n\n\n\n\n\n\n\nCharacters Not Loyal to Their Allegiances\n\n\nShow the code\n# Filter data for characters not loyal to their allegiances\ncharacter_swap <- ds %>%\n  filter(allegiance_switched == 2 & allegiance_last %in% 1:4)\n\n# Fit survival model\nswitch <- survfit(Surv(character_swap$exp_time_hrs, character_swap$dth_flag) ~ character_swap$allegiance_last)\n\n# Plot survival curves\nsurv_not_loyal <- ggsurvplot(fit = switch, data = character_swap,\n                             legend = \"bottom\", \n                             legend.title = \"Allegiance\",\n                             legend.labs = c(\"Stark\", \"Targaryen\", \"Night's Watch\", \"Lannister\"),\n                             risk.table = F, conf.int = F) +\n                  labs(title = \"Survival of Characters Not Loyal to Their Allegiances\",\n                       x = \"Time in Hours\")\nsurv_not_loyal\n\n\n\n\n\nComparison of Survival Curves\n\n\nShow the code\n# Compare survival curves for characters who switched allegiances and those who didn't\nallegiance_switch <- survfit(Surv(ds$exp_time_hrs, ds$dth_flag) ~ ds$allegiance_switched)\n\n# Plot survival curves\nallegiance_switch2 <- ggsurvplot(fit = allegiance_switch, data = ds,\n                                 legend = \"bottom\", \n                                 legend.title = \"Swapped Allegiance?\",\n                                 legend.labs = c(\"Yes\", \"No\"),\n                                 risk.table = F, conf.int = T) +\n                      labs(title = \"Survival Curves for Characters who Swapped/Kept Allegiance\",\n                           x = \"Time to Death (Hours)\")\nallegiance_switch2\n\n\n\n\n\nOverall Survival Curve for Game of Thrones Characters\n\n\nShow the code\n# Fit overall survival model\nkm2 <- survfit(Surv(time = ds$exp_time_hrs, event = ds$dth_flag) ~ 1)\n\n# Plot overall survival curve\ngot_surv <- ggsurvplot(fit = km2, data = ds,\n                       legend = \"bottom\", \n                       legend.title = \"GoT Characters\",\n                       risk.table = F, conf.int = F, surv.median.line = \"hv\") +\n            labs(title = \"Survival Curve for Game of Thrones Characters\",\n                 x = \"Time to Death (Hours)\")\ngot_surv"
+  },
+  {
+    "objectID": "posts/GoT (Game of Thrones) Analysis/GoT.html#key-insights-analysis",
+    "href": "posts/GoT (Game of Thrones) Analysis/GoT.html#key-insights-analysis",
+    "title": "Survival Analysis of Game of Thrones Characters",
+    "section": "Key Insights & Analysis:",
+    "text": "Key Insights & Analysis:\n1. Survival by Allegiance:\nCharacters loyal to their allegiances, such as Stark, Targaryen, Night’s Watch, and Lannister, tend to have higher survival rates compared to those who switch allegiances.\nThe survival curves for characters loyal to their allegiances show relatively higher probabilities of survival over time.\n2. Effect of Allegiance Switching:\nCharacters who switch allegiances exhibit different survival patterns compared to those who remain loyal.\nThe survival curves for characters who switched allegiances demonstrate varying probabilities of survival, depending on their new allegiance.\n3. Overall Survival:\nThe overall survival curve for Game of Thrones characters provides a comprehensive view of the survival probability across all allegiances.\nIt showcases the general trend of character survival throughout the series, highlighting critical periods of high mortality.\n4. Comparative Analysis:\nComparing survival curves between characters who remained loyal and those who switched allegiances offers insights into the impact of allegiance on survival outcomes.\nStatistical tests, such as the log-rank test, can be employed to determine significant differences in survival between various allegiance groups.\n5. Character-Specific Analysis:\nFurther analysis can be conducted to explore survival patterns for specific characters or character groups, considering factors like gender, age, and storyline involvement.\nExamining survival trends for prominent characters can reveal narrative arcs and thematic elements influencing survival outcomes.\n6. Implications for Plot and Storytelling:\nSurvival analysis offers a unique perspective on narrative dynamics, character development, and plot progression within the Game of Thrones universe.\nUnderstanding survival patterns can shed light on the storytelling decisions made by authors and the thematic elements driving character fates."
+  },
+  {
+    "objectID": "posts/GoT (Game of Thrones) Analysis/GoT.html#conclusion",
+    "href": "posts/GoT (Game of Thrones) Analysis/GoT.html#conclusion",
+    "title": "Survival Analysis of Game of Thrones Characters",
+    "section": "Conclusion",
+    "text": "Conclusion\nBy combining statistical techniques with narrative analysis, this survival analysis provides valuable insights into the complex world of Game of Thrones, uncovering patterns of allegiance, betrayal, and survival that shape the story’s rich tapestry."
+  },
+  {
     "objectID": "posts/Human Resource Analytics Dashboard/powerbilhr.html",
     "href": "posts/Human Resource Analytics Dashboard/powerbilhr.html",
     "title": "Human Resources Analytics Dashboard",
@@ -70,11 +105,109 @@
     "text": "Conclusion\nThe Human Resources Analytics Dashboard is an indispensable tool for organizational leaders, providing comprehensive insights into financial performance, sales trends, customer satisfaction, and workforce dynamics. By facilitating data-driven decision-making, it empowers the organization to enhance performance management, drive growth, and foster a culture of continuous improvement."
   },
   {
+    "objectID": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html",
+    "href": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html",
+    "title": "Expected Population Growth (Inspired by TidyTuesday dataset)",
+    "section": "",
+    "text": "This analysis examines the total figures for the global population, focusing on how the size of the population is expected to evolve in different regions and countries of the world."
+  },
+  {
+    "objectID": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html#overview",
+    "href": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html#overview",
+    "title": "Expected Population Growth (Inspired by TidyTuesday dataset)",
+    "section": "Overview",
+    "text": "Overview\n\n\nShow the code\nlibrary(tidyverse)\n\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.4.0     ✔ purrr   1.0.0\n✔ tibble  3.2.1     ✔ dplyr   1.1.1\n✔ tidyr   1.2.1     ✔ stringr 1.5.0\n✔ readr   2.1.3     ✔ forcats 0.5.2\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\n\nShow the code\nlibrary(lubridate)\n\n\nLoading required package: timechange\n\nAttaching package: 'lubridate'\n\nThe following objects are masked from 'package:base':\n\n    date, intersect, setdiff, union\n\n\nShow the code\nlibrary(skimr)\nlibrary(survival)\nlibrary(survminer)\n\n\nLoading required package: ggpubr\n\nAttaching package: 'survminer'\n\nThe following object is masked from 'package:survival':\n\n    myeloma\n\n\nShow the code\nlibrary(plotly)\n\n\n\nAttaching package: 'plotly'\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\nThe following object is masked from 'package:stats':\n\n    filter\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\n\nShow the code\nlibrary(DT)\n\n# Load the data\nthePath <- \"/Users/cordarrylhall/CorDarryl Hall Data Portfolio/CorDarryl Hall Data Portfolio\"\nds <- read_csv(paste(thePath, \"Projections-of-the-world-population-until-2100-by-the-Wittgenstein-Centre.csv\", sep=\"/\"))\n\n\nRows: 189 Columns: 4\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (2): Entity, Code\ndbl (2): Year, PopulationTotal_SSP2\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nShow the code\n# Display basic info about the data\nnames(ds)\n\n\n[1] \"Entity\"               \"Code\"                 \"Year\"                \n[4] \"PopulationTotal_SSP2\"\n\n\nShow the code\nhead(ds)\n\n\n# A tibble: 6 × 4\n  Entity Code   Year PopulationTotal_SSP2\n  <chr>  <chr> <dbl>                <dbl>\n1 Africa <NA>   1970            368002720\n2 Africa <NA>   1975            420166976\n3 Africa <NA>   1980            482569664\n4 Africa <NA>   1985            553231936\n5 Africa <NA>   1990            634977088\n6 Africa <NA>   1995            720581760\n\n\nShow the code\nskim(ds)\n\n\n\nData summary\n\n\nName\nds\n\n\nNumber of rows\n189\n\n\nNumber of columns\n4\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n2\n\n\nnumeric\n2\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nEntity\n0\n1.00\n4\n31\n0\n7\n0\n\n\nCode\n162\n0.14\n8\n8\n0\n1\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nYear\n0\n1\n2035\n3.90500e+01\n1970\n2000\n2035\n2070\n2100\n▇▇▇▇▇\n\n\nPopulationTotal_SSP2\n0\n1\n2184638392\n2.72418e+09\n19334460\n425366016\n737849088\n3680742912\n9397164032\n▇▁▂▁▁"
+  },
+  {
+    "objectID": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html#key-insights",
+    "href": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html#key-insights",
+    "title": "Expected Population Growth (Inspired by TidyTuesday dataset)",
+    "section": "Key Insights",
+    "text": "Key Insights\nPopulation Growth by Region: Different regions are expected to experience varying rates of population growth.\nTop Growing Regions: Identify the regions with the highest expected population growth.\nDistribution of Population Growth: Understanding the distribution and density of expected population growth across different regions."
+  },
+  {
+    "objectID": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html#interactive-boxplot-of-expected-population-growth-by-region",
+    "href": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html#interactive-boxplot-of-expected-population-growth-by-region",
+    "title": "Expected Population Growth (Inspired by TidyTuesday dataset)",
+    "section": "Interactive Boxplot of Expected Population Growth by Region",
+    "text": "Interactive Boxplot of Expected Population Growth by Region\n\n\nShow the code\n# Interactive boxplot\nplot_ly(ds, x = ~Entity, y = ~PopulationTotal_SSP2, type = 'box', name = 'Population') %>%\n  layout(title = \"Expected Population Growth by Region\",\n         xaxis = list(title = \"Region\"),\n         yaxis = list(title = \"Population\"))"
+  },
+  {
+    "objectID": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html#expected-population-growth-by-region-histogram",
+    "href": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html#expected-population-growth-by-region-histogram",
+    "title": "Expected Population Growth (Inspired by TidyTuesday dataset)",
+    "section": "Expected Population Growth by Region (Histogram)",
+    "text": "Expected Population Growth by Region (Histogram)\n\n\nShow the code\n# Histogram of expected population growth\np <- ds %>%\n  ggplot(aes(x = PopulationTotal_SSP2, fill = Entity)) +\n  geom_histogram(color = \"black\", bins = 20) +\n  ggtitle(\"Expected Population Growth by Region\") +\n  facet_wrap(. ~ Entity) +\n  theme_minimal()\n\nggplotly(p)"
+  },
+  {
+    "objectID": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html#trend-analysis-population-growth-over-time",
+    "href": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html#trend-analysis-population-growth-over-time",
+    "title": "Expected Population Growth (Inspired by TidyTuesday dataset)",
+    "section": "Trend Analysis: Population Growth Over Time",
+    "text": "Trend Analysis: Population Growth Over Time\n\n\nShow the code\n# Line plot for population growth over time\ntrend_plot <- ds %>%\n  ggplot(aes(x = Year, y = PopulationTotal_SSP2, color = Entity)) +\n  geom_line() +\n  ggtitle(\"Population Growth Over Time by Region\") +\n  xlab(\"Year\") +\n  ylab(\"Population\") +\n  theme_minimal()\n\nggplotly(trend_plot)"
+  },
+  {
+    "objectID": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html#comparative-analysis",
+    "href": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html#comparative-analysis",
+    "title": "Expected Population Growth (Inspired by TidyTuesday dataset)",
+    "section": "Comparative Analysis",
+    "text": "Comparative Analysis\n\n\nShow the code\n# Compare population growth in top regions\ntop_regions <- ds %>%\n  group_by(Entity) %>%\n  summarize(Total_Population = sum(PopulationTotal_SSP2)) %>%\n  arrange(desc(Total_Population)) %>%\n  head(10)\n\ndatatable(top_regions, options = list(pageLength = 5, autoWidth = TRUE))"
+  },
+  {
+    "objectID": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html#detailed-analysis",
+    "href": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html#detailed-analysis",
+    "title": "Expected Population Growth (Inspired by TidyTuesday dataset)",
+    "section": "Detailed Analysis",
+    "text": "Detailed Analysis\n\n\nShow the code\n# Regional breakdown plot\nregional_breakdown <- ds %>%\n  ggplot(aes(x = Entity, y = PopulationTotal_SSP2, fill = Entity)) +\n  geom_col() +\n  coord_flip() +\n  ggtitle(\"Regional Breakdown of Expected Population Growth\") +\n  xlab(\"Region\") +\n  ylab(\"Total Population\") +\n  theme_minimal()\n\nprint(regional_breakdown)"
+  },
+  {
+    "objectID": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html#conclusion",
+    "href": "posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html#conclusion",
+    "title": "Expected Population Growth (Inspired by TidyTuesday dataset)",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe analysis provides insights into the expected population growth across various regions and countries. By leveraging interactive visualizations, trend analysis, and comparative studies, we can better understand the global population dynamics and prepare for future demographic shifts.\nFeel free to explore the interactive elements and delve deeper into the analysis"
+  },
+  {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
     "title": "Welcome To My Blog",
     "section": "",
     "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/Country Migration/sank.html",
+    "href": "posts/Country Migration/sank.html",
+    "title": "Country Migration",
+    "section": "",
+    "text": "This document presents an analysis of the number of people migrating from one country (left) to another (right). The interactive Sankey diagram below visualizes these migration flows, offering insights into the patterns and volume of migration between different countries."
+  },
+  {
+    "objectID": "posts/Country Migration/sank.html#overview",
+    "href": "posts/Country Migration/sank.html#overview",
+    "title": "Country Migration",
+    "section": "Overview",
+    "text": "Overview\n\n\nShow the code\nlibrary(tidyverse)\n\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.4.0     ✔ purrr   1.0.0\n✔ tibble  3.2.1     ✔ dplyr   1.1.1\n✔ tidyr   1.2.1     ✔ stringr 1.5.0\n✔ readr   2.1.3     ✔ forcats 0.5.2\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\n\nShow the code\nlibrary(viridis)\n\n\nLoading required package: viridisLite\n\n\nShow the code\nlibrary(patchwork)\nlibrary(hrbrthemes)\n\n\nNOTE: Either Arial Narrow or Roboto Condensed fonts are required to use these themes.\n      Please use hrbrthemes::import_roboto_condensed() to install Roboto Condensed and\n      if Arial Narrow is not on your system, please see https://bit.ly/arialnarrow\n\n\nShow the code\nlibrary(circlize)\n\n\n========================================\ncirclize version 0.4.15\nCRAN page: https://cran.r-project.org/package=circlize\nGithub page: https://github.com/jokergoo/circlize\nDocumentation: https://jokergoo.github.io/circlize_book/book/\n\nIf you use it in published research, please cite:\nGu, Z. circlize implements and enhances circular visualization\n  in R. Bioinformatics 2014.\n\nThis message can be suppressed by:\n  suppressPackageStartupMessages(library(circlize))\n========================================\n\n\nShow the code\nlibrary(networkD3)\n\n# Load and prepare the data\ndata <- read.table(\"https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/13_AdjacencyDirectedWeighted.csv\", header=TRUE)\ndata_long <- data %>%\n  rownames_to_column() %>%\n  gather(key = 'key', value = 'value', -rowname) %>%\n  filter(value > 0)\ncolnames(data_long) <- c(\"source\", \"target\", \"value\")\ndata_long$target <- paste(data_long$target, \" \", sep=\"\")\n\n# Create nodes\nnodes <- data.frame(name=c(as.character(data_long$source), as.character(data_long$target)) %>% unique())\n\n# Create source and target IDs\ndata_long$IDsource <- match(data_long$source, nodes$name) - 1\ndata_long$IDtarget <- match(data_long$target, nodes$name) - 1\n\n# Define color scale\nColourScal <- 'd3.scaleOrdinal().range([\"#FDE725FF\",\"#B4DE2CFF\",\"#6DCD59FF\",\"#35B779FF\",\"#1F9E89FF\",\"#26828EFF\",\"#31688EFF\",\"#3E4A89FF\",\"#482878FF\",\"#440154FF\"])'\n\n# Create the Sankey diagram\nsankeyNetwork(Links = data_long, Nodes = nodes,\n              Source = \"IDsource\", Target = \"IDtarget\",\n              Value = \"value\", NodeID = \"name\", \n              sinksRight=FALSE, colourScale=ColourScal, nodeWidth=40, fontSize=13, nodePadding=20)"
+  },
+  {
+    "objectID": "posts/Country Migration/sank.html#key-insights",
+    "href": "posts/Country Migration/sank.html#key-insights",
+    "title": "Country Migration",
+    "section": "Key Insights",
+    "text": "Key Insights\nMigration Patterns: Observe which countries are the most common sources and destinations for migrants.\nVolume of Migration: Identify the countries with the highest number of migrants.\nRegional Trends: Analyze the regional trends and how migration flows vary between different parts of the world."
+  },
+  {
+    "objectID": "posts/Country Migration/sank.html#detailed-analysis",
+    "href": "posts/Country Migration/sank.html#detailed-analysis",
+    "title": "Country Migration",
+    "section": "Detailed Analysis",
+    "text": "Detailed Analysis\nTo dive deeper into the data, we use various visualization techniques and data summarizations:\n\nMigration Flows\n\n\nShow the code\n# Plot migration flows\nlibrary(ggplot2)\n\nmigration_flow <- data_long %>%\n  ggplot(aes(x=source, y=value, fill=target)) +\n  geom_bar(stat=\"identity\") +\n  theme_minimal() +\n  labs(title=\"Migration Flows by Country\", x=\"Source Country\", y=\"Number of Migrants\") +\n  theme(axis.text.x = element_text(angle = 90, hjust = 1))\n\nprint(migration_flow)\n\n\n\n\n\n\n\nTop Migrating Countries\n\n\nShow the code\n# Summarize top migrating countries\ntop_migrating_countries <- data_long %>%\n  group_by(source) %>%\n  summarize(total_migrants = sum(value)) %>%\n  arrange(desc(total_migrants)) %>%\n  head(10)\n\n# Display in a table\nlibrary(DT)\n\n\n\nAttaching package: 'DT'\n\n\nThe following object is masked from 'package:networkD3':\n\n    JS\n\n\nShow the code\ndatatable(top_migrating_countries, options = list(pageLength = 5))"
+  },
+  {
+    "objectID": "posts/Country Migration/sank.html#conclusion",
+    "href": "posts/Country Migration/sank.html#conclusion",
+    "title": "Country Migration",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe migration data reveals significant trends and patterns in global migration. By leveraging data visualization tools, we can uncover valuable insights that help understand the movement of people across countries.\nFeel free to explore the interactive elements and delve deeper into the analysis."
   },
   {
     "objectID": "posts/Wine /Wine.html",
@@ -117,6 +250,83 @@
     "title": "Wine & Feature Engineering",
     "section": "Conclusion:",
     "text": "Conclusion:\nThis presentation demonstrated the process of feature engineering, model training using the Caret library, and evaluating the model’s performance. Key steps included creating features, handling missing data, partitioning the dataset, and assessing the model using RMSE. The importance of reproducibility in data partitioning and model evaluation was emphasized through the use of set.seed."
+  },
+  {
+    "objectID": "posts/Netflix Survival Analysis/Netflix Survival.html",
+    "href": "posts/Netflix Survival Analysis/Netflix Survival.html",
+    "title": "Netflix Survival Analysis",
+    "section": "",
+    "text": "This dataset, collected over two years from January 2017 to June 2019, captures the behavior of Netflix users in the UK who opted to have their browser activity tracked. This data, which represents approximately 25% of global traffic activity from laptops and desktops, provides valuable insights into viewing patterns and preferences. The primary goal of this analysis is to understand how filmmakers and creators can determine what movies to produce and which audiences to target."
+  },
+  {
+    "objectID": "posts/Netflix Survival Analysis/Netflix Survival.html#data-preparation",
+    "href": "posts/Netflix Survival Analysis/Netflix Survival.html#data-preparation",
+    "title": "Netflix Survival Analysis",
+    "section": "Data Preparation",
+    "text": "Data Preparation\n\n\nShow the code\nlibrary(tidyverse)\n\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.4.0     ✔ purrr   1.0.0\n✔ tibble  3.2.1     ✔ dplyr   1.1.1\n✔ tidyr   1.2.1     ✔ stringr 1.5.0\n✔ readr   2.1.3     ✔ forcats 0.5.2\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\n\nShow the code\nlibrary(skimr)\nlibrary(survival)\nlibrary(survminer)\n\n\nLoading required package: ggpubr\n\nAttaching package: 'survminer'\n\nThe following object is masked from 'package:survival':\n\n    myeloma\n\n\nShow the code\nlibrary(fitdistrplus)\n\n\nLoading required package: MASS\n\nAttaching package: 'MASS'\n\nThe following object is masked from 'package:dplyr':\n\n    select\n\n\nShow the code\nthePath=\"/Users/Shared/Survival Analysis\"\n\ndf = read_csv(paste(thePath, \"vodclickstream_uk_movies_03.csv\", sep=\"/\"))\n\n\nNew names:\nRows: 671736 Columns: 8\n── Column specification\n──────────────────────────────────────────────────────── Delimiter: \",\" chr\n(5): title, genres, release_date, movie_id, user_id dbl (2): ...1, duration\ndttm (1): datetime\nℹ Use `spec()` to retrieve the full column specification for this data. ℹ\nSpecify the column types or set `show_col_types = FALSE` to quiet this message.\n• `` -> `...1`\n\n\nShow the code\ndf2 = read_csv(paste(thePath, \"netflix_titles.csv\", sep=\"/\"))\n\n\nRows: 8807 Columns: 12\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (11): show_id, type, title, director, cast, country, date_added, rating,...\ndbl  (1): release_year\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nShow the code\n# Merging data that contains movie length to normalize watch length\ndf <- merge(df, df2, by = \"title\")\n\n# Data cleaning and preparation\ndf <- subset(df, !grepl(\"Seasons\", duration.y)) # Removing seasons\ndf$duration.y <- as.numeric(gsub(\" min\", \"\", df$duration.y)) # Converting duration to numeric\n\n\nWarning: NAs introduced by coercion\n\n\nShow the code\ndf <- subset(df, duration.x > 0) # Removing invalid durations\n\n# Creating columns for analysis\ndf <- df %>%\n    mutate(\n        event = ifelse(duration.x > 0, 1, 0),\n        genres = as.factor(genres),\n        minutes_watched = duration.x / 60,\n        perc_movie_watched = minutes_watched / duration.y,\n        is_action = ifelse(grepl('Action', genres), 1, 0),\n        is_adventure = ifelse(grepl('Adventure', genres), 1, 0),\n        is_comedy = ifelse(grepl('Comedy', genres), 1, 0),\n        is_documentary = ifelse(grepl('Documentary', genres), 1, 0),\n        is_drama = ifelse(grepl('Drama', genres), 1, 0),\n        is_horror = ifelse(grepl('Horror', genres), 1, 0),\n        is_thriller = ifelse(grepl('Thriller', genres), 1, 0),\n        is_romance = ifelse(grepl('romance', genres), 1, 0),\n        is_animation = ifelse(grepl('animation', genres), 1, 0),\n        is_crime = ifelse(grepl('Crime', genres), 1, 0),\n        is_scifi = ifelse(grepl('Sci-Fi', genres), 1, 0),\n        is_sport = ifelse(grepl('Sport', genres), 1, 0),\n        is_musical = ifelse(grepl('musical', genres), 1, 0),\n        is_fantasy = ifelse(grepl('Fantasy', genres), 1, 0),\n        is_mystery = ifelse(grepl('Mystery', genres), 1, 0),\n        is_biography = ifelse(grepl('Biography', genres), 1, 0),\n        is_history = ifelse(grepl('History', genres), 1, 0),\n        is_war = ifelse(grepl('War', genres), 1, 0),\n        is_western = ifelse(grepl('Western', genres), 1, 0),\n        is_short = ifelse(grepl('Short', genres), 1, 0)\n    )\n\n# Cleaning up the percentage of the movie watched\ndf$perc_movie_watched_clean <- round(ifelse(df$perc_movie_watched > 1, 1, df$perc_movie_watched), 2)"
+  },
+  {
+    "objectID": "posts/Netflix Survival Analysis/Netflix Survival.html#key-insights-and-analysis",
+    "href": "posts/Netflix Survival Analysis/Netflix Survival.html#key-insights-and-analysis",
+    "title": "Netflix Survival Analysis",
+    "section": "Key Insights and Analysis",
+    "text": "Key Insights and Analysis\nTo understand viewing patterns across different genres, survival analysis was employed. The survival curves represent the probability of users continuing to watch a movie over time, segmented by genre. Here are the insights and analyses for some key genres:\n\nAction Movies:\n\n\nShow the code\nsurvobj <- Surv(df$perc_movie_watched_clean, df$event)\nfit_action <- survfit(survobj~is_action, data = df)\nggsurvplot(fit=fit_action, data=df, risk.table = F, conf.int=T) +\n    labs(\n        title=\"Netflix Movie Genre Survival Curve - Action\",\n        x=\"Watch Length (Minutes)\") \n\n\n\n\n\nShow the code\nsurv_median(fit_action)\n\n\nWarning: `select_()` was deprecated in dplyr 0.7.0.\nℹ Please use `select()` instead.\nℹ The deprecated feature was likely used in the survminer package.\n  Please report the issue at <\u001b]8;;https://github.com/kassambara/survminer/issues\u0007https://github.com/kassambara/survminer/issues\u001b]8;;\u0007>.\n\n\n       strata median lower upper\n1 is_action=0   0.97  0.97  0.98\n2 is_action=1   0.99  0.99    NA\n\n\nInsight: Action movies tend to have high initial engagement but may see a drop-off in viewership as the movie progresses.\nAnalysis: Filmmakers should focus on maintaining high-paced, engaging content throughout the movie to retain viewers.\n\n\nHorror Movies:\n\n\nShow the code\nfit_horror <- survfit(survobj~is_horror, data = df)\nggsurvplot(fit=fit_horror, data=df, risk.table = F, conf.int=T, surv.median.line = 'hv') +\n    labs(\n        title=\"Netflix Movie Genre Survival Curve - Horror\",\n        x=\"Watch Length (Minutes)\") \n\n\n\n\n\nShow the code\nsurv_median(fit_horror)\n\n\n       strata median lower upper\n1 is_horror=0   0.98  0.98  0.99\n2 is_horror=1   0.95  0.94  0.96\n\n\nInsight: Horror movies have a consistent viewership curve, indicating a dedicated audience.\nAnalysis: This genre benefits from strong, suspenseful storytelling that keeps viewers engaged from start to finish.\n\n\nThriller Movies:\n\n\nShow the code\nfit_thriller <- survfit(survobj~is_thriller, data = df)\nggsurvplot(fit=fit_thriller, data=df, risk.table = F, conf.int=T, surv.median.line = 'hv') +\n    labs(\n        title=\"Netflix Movie Genre Survival Curve - Thriller\",\n        x=\"Watch Length (Minutes)\") \n\n\n\n\n\nShow the code\nsurv_median(fit_thriller)\n\n\n         strata median lower upper\n1 is_thriller=0   0.99  0.98  0.99\n2 is_thriller=1   0.96  0.95  0.96\n\n\nInsight: Thriller movies show a steady decline in viewership over time.\nAnalysis: Thrillers need to maintain suspense and plot twists to keep the audience engaged.\n\n\nRomance Movies:\n\n\nShow the code\nfit_romance <- survfit(survobj~is_romance, data = df)\nggsurvplot(fit=fit_romance, data=df, risk.table = F, conf.int=T, surv.median.line = 'hv') +\n    labs(\n        title=\"Netflix Movie Genre Survival Curve - Romance\",\n        x=\"Watch Length (Minutes)\") \n\n\n\n\n\nShow the code\nsurv_median(fit_romance)\n\n\n  strata median lower upper\n1    All   0.98  0.97  0.98\n\n\nInsight: Romance movies tend to retain a significant portion of their audience throughout the film.\nAnalysis: Emotional engagement and character development are key to keeping viewers invested.\n\n\nAnimation Movies:\n\n\nShow the code\nfit_animation <- survfit(survobj~is_animation, data = df)\nggsurvplot(fit=fit_animation, data=df, risk.table = F, conf.int=T, surv.median.line = 'hv') +\n    labs(\n        title=\"Netflix Movie Genre Survival Curve - Animation\",\n        x=\"Watch Length (Minutes)\") \n\n\n\n\n\nShow the code\nsurv_median(fit_animation)\n\n\n  strata median lower upper\n1    All   0.98  0.97  0.98\n\n\nInsight: Animation movies have high retention rates, particularly among younger audiences.\nAnalysis: Visual appeal and engaging storylines are crucial for maintaining viewer interest in animation."
+  },
+  {
+    "objectID": "posts/Netflix Survival Analysis/Netflix Survival.html#summary",
+    "href": "posts/Netflix Survival Analysis/Netflix Survival.html#summary",
+    "title": "Netflix Survival Analysis",
+    "section": "Summary",
+    "text": "Summary\nThe detailed visual summaries of Netflix user behavior offer critical insights for filmmakers and content creators. The survival analysis reveals how different genres perform in terms of viewer retention and engagement."
+  },
+  {
+    "objectID": "posts/Netflix Survival Analysis/Netflix Survival.html#key-insights",
+    "href": "posts/Netflix Survival Analysis/Netflix Survival.html#key-insights",
+    "title": "Netflix Survival Analysis",
+    "section": "Key Insights:",
+    "text": "Key Insights:\nAction: High initial engagement with potential drop-offs; requires sustained pacing.\nHorror: Consistent viewership; benefits from strong suspense.\nThriller: Steady decline; needs continuous suspense and plot twists.\nRomance: Strong retention; driven by emotional engagement.\nAnimation: High retention, especially among younger audiences; relies on visual appeal."
+  },
+  {
+    "objectID": "posts/Netflix Survival Analysis/Netflix Survival.html#data-analysis",
+    "href": "posts/Netflix Survival Analysis/Netflix Survival.html#data-analysis",
+    "title": "Netflix Survival Analysis",
+    "section": "Data Analysis:",
+    "text": "Data Analysis:\nThe analysis highlights the importance of genre-specific strategies in content creation.\nIt emphasizes the need for continuous engagement, especially in genres like Action and Thriller.\nRomance and Animation benefit from emotional and visual engagement, respectively."
+  },
+  {
+    "objectID": "posts/Netflix Survival Analysis/Netflix Survival.html#conclusion",
+    "href": "posts/Netflix Survival Analysis/Netflix Survival.html#conclusion",
+    "title": "Netflix Survival Analysis",
+    "section": "Conclusion:",
+    "text": "Conclusion:\nUnderstanding viewer behavior through survival analysis enables filmmakers to tailor their content to audience preferences, enhancing engagement and retention. By leveraging these insights, creators can make informed decisions about the types of movies to produce and the target audiences to focus on, ultimately leading to more successful and engaging content on platforms like Netflix."
+  },
+  {
+    "objectID": "posts/Labor Utilization Dashboard/powerbila.html",
+    "href": "posts/Labor Utilization Dashboard/powerbila.html",
+    "title": "Labor Utilization Dashboard",
+    "section": "",
+    "text": "This section provides an overview of labor utilization, including the number of hours worked, productivity levels, labor costs, and overtime expenses. It also details the types of work performed, helping management make informed decisions about staffing and resource allocation.\nInsight: High productivity levels are observed in teams involved in project-specific tasks.\nAnalysis: This information can guide decisions on optimizing workforce allocation and improving productivity."
+  },
+  {
+    "objectID": "posts/Labor Utilization Dashboard/powerbila.html#labor-application-resources",
+    "href": "posts/Labor Utilization Dashboard/powerbila.html#labor-application-resources",
+    "title": "Labor Utilization Dashboard",
+    "section": "Labor Application Resources",
+    "text": "Labor Application Resources\nThis tab includes detailed resource utilization tables, presenting data on hours worked, productivity levels, labor costs, and overtime expenses.\nInsight: Certain projects are consuming more labor hours than planned, impacting overall productivity.\nAnalysis: Detailed tables help in pinpointing projects that require additional resources or process improvements."
+  },
+  {
+    "objectID": "posts/Labor Utilization Dashboard/powerbila.html#labor-application-details",
+    "href": "posts/Labor Utilization Dashboard/powerbila.html#labor-application-details",
+    "title": "Labor Utilization Dashboard",
+    "section": "Labor Application Details",
+    "text": "Labor Application Details\nThis tab provides detailed resource utilization data summarized by Project & Resource Groups, offering insights into labor distribution and effectiveness.\nInsight: Resource groups focused on high-impact projects show better utilization rates.\nAnalysis: Summarized data helps in evaluating the efficiency of resource deployment across various projects."
+  },
+  {
+    "objectID": "posts/Labor Utilization Dashboard/powerbila.html#conclusion",
+    "href": "posts/Labor Utilization Dashboard/powerbila.html#conclusion",
+    "title": "Labor Utilization Dashboard",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis Power BI Dashboard is an invaluable tool for managing labor utilization, providing detailed insights that are essential for optimizing workforce efficiency and productivity. The Labor Application Summary section offers a comprehensive overview of labor utilization, including the number of hours worked, productivity levels, labor costs, and overtime expenses. High productivity levels are particularly noted in teams working on project-specific tasks. This information is crucial for guiding decisions on staffing and resource allocation, ensuring that the organization can enhance productivity through strategic workforce management.\nIn the Labor Application Resources tab, detailed tables present critical data on hours worked, productivity, labor costs, and overtime expenses. Insights from this section reveal that certain projects are consuming more labor hours than initially planned, impacting overall productivity. By pinpointing these projects, management can identify areas that require additional resources or process improvements, facilitating more effective labor utilization.\nThe Labor Application Details tab provides a granular view of resource utilization data summarized by Project and Resource Groups. It highlights that resource groups focused on high-impact projects demonstrate better utilization rates. This summarized data is instrumental in evaluating the efficiency of resource deployment across various projects, allowing the organization to make informed decisions to optimize labor distribution and effectiveness.\nOverall, the detailed visual summaries and insights provided by the Power BI Dashboard enable the organization to monitor labor utilization meticulously, identify trends, and implement data-driven strategies for workforce optimization. This comprehensive approach ensures that labor resources are effectively managed, contributing to improved productivity and operational efficiency"
   },
   {
     "objectID": "posts/Sleep and Employment: Predicting Job Classification through Data Analytics/Sleeping.html",
@@ -224,11 +434,39 @@
     "text": "Conclusions\n1.Predictive Power: Sleep patterns, stress levels, and demographic data can effectively predict job classifications.\n2.Model Performance: Random Forest classifiers showed promising accuracy, outperforming SVM in this context.\n3.Workforce Planning: These insights can inform HR strategies, promoting better sleep health and productivity among employees.\n4.Future Research: Further studies can explore additional factors such as dietary habits and mental health for a comprehensive analysis.\nThis comprehensive analysis underscores the critical role of sleep patterns in predicting job classifications, offering valuable insights for both researchers and HR professionals. By integrating these findings into workforce management strategies, organizations can foster a healthier, more productive work environment."
   },
   {
+    "objectID": "posts/Offer Analysis Dashboard/powerbi.html",
+    "href": "posts/Offer Analysis Dashboard/powerbi.html",
+    "title": "Offer Analysis Dashboard",
+    "section": "",
+    "text": "This Power BI Summary is a real-life example that I created for a previous organization. This dashboard was designed to provide an overview of key performance indicators (KPIs) and metrics that were relevant to the organization’s goals and objectives.\n\n\n\nSummary: This metric measures the acceptance rate of job offers among different specialized groups, calculated monthly.\nKey Insights: Higher acceptance rates indicate successful alignment between job offers and candidate expectations.\nLower acceptance rates suggest potential areas needing improvement in the recruitment process.\n\n\n\n\nSummary: This metric tracks the rate at which job offers are declined among different specialized groups, calculated monthly.\nKey Insights: Helps identify why certain groups decline offers more frequently, such as mismatches between job requirements and candidate skills or issues with compensation packages.\nProvides data for proactive adjustments in recruitment strategies.\n\n\n\n\nSummary: This metric measures how competitive the organization’s job offers are compared to the market, based on pay grade and job description/category.\nKey Insights: A low score indicates the need for salary adjustments to attract top talent.\nA high score suggests that the organization’s offers are competitive, aiding in talent attraction and retention."
+  },
+  {
+    "objectID": "posts/Offer Analysis Dashboard/powerbi.html#conclusion",
+    "href": "posts/Offer Analysis Dashboard/powerbi.html#conclusion",
+    "title": "Offer Analysis Dashboard",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nKey Takeaways:\nThe Offer Accept Ratio and Offer Decline Ratio metrics offer crucial insights into the recruitment process, highlighting the effectiveness of job offers and areas for improvement.\nSalary Competitiveness is essential for understanding the organization’s position in the job market, ensuring competitive compensation packages.\nThe interactive dashboard design allows for in-depth analysis and informed decision-making across various organizational facets.\nContinuous monitoring of these metrics enables the organization to adapt strategies, enhance performance, improve recruitment efforts, and maintain a competitive edge in the market."
+  },
+  {
+    "objectID": "posts/Oregon Math Analysis/ORMATH.html",
+    "href": "posts/Oregon Math Analysis/ORMATH.html",
+    "title": "Analysis of Math Students in Oregon",
+    "section": "",
+    "text": "This analysis is conducted to examine the performance of Math students in the state of Oregon across various demographic factors. By leveraging data visualization and statistical methods, we aim to uncover key insights that can inform educational policy and resource allocation."
+  },
+  {
+    "objectID": "posts/Oregon Math Analysis/ORMATH.html#data-analysis",
+    "href": "posts/Oregon Math Analysis/ORMATH.html#data-analysis",
+    "title": "Analysis of Math Students in Oregon",
+    "section": "Data Analysis",
+    "text": "Data Analysis\n\nStudent Performance by Ethnicity/Student Group:\nSummary: This analysis tracks the performance of Math students based on various demographic factors such as ethnicity, gender, and socioeconomic status.\nKey Insights:\nIdentification of High and Low Performing Regions: By analyzing performance data, regions with significant disparities can be identified, enabling targeted interventions and resource allocation.\nSupport for Demographic Groups: The analysis highlights which demographic groups may require additional support or resources, informing the development of tailored educational programs.\nRegional Disparities: The identification of regional disparities can guide policy-makers to implement targeted interventions aimed at improving educational outcomes in underperforming areas.\n\n\nShow the code\nORmath = read_csv(paste(thePath, \"ORmath.csv\", sep = \"/\"))\n\n\nRows: 176 Columns: 7\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (2): StudentGroup, GradeLevel\ndbl (5): PercentProficient, PercentLevel4, PercentLevel3, PercentLevel2, Per...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nShow the code\nORmath %>% \n  filter(GradeLevel != \"All Grades\") %>%\n  ggplot(aes(x = StudentGroup, y = PercentProficient)) +\n  geom_boxplot(color = \"black\", fill = \"cyan4\") +\n  ggtitle(\"OR Academic Report Card 2021-2022: Standardized Math Exam\") +\n  xlab(\"Student Group\") + \n  ylab(\"% Proficient (score of 3 or 4)\") +\n  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))\n\n\nWarning: Removed 12 rows containing non-finite values (`stat_boxplot()`)."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "CorDarryl Hall’s Data Portfolio",
     "section": "",
-    "text": "Billboard Top 100’s in 2000\n\n\n\nTime Series Analysis\n\n\nData Analysis\n\n\nData Science\n\n\nData Visualization\n\n\nTrend Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHuman Resources Analytics Dashboard\n\n\n\nPower BI\n\n\nData Visualization\n\n\nKPI Analysis\n\n\nHR Analytics\n\n\nEmployee Retention\n\n\nTurnover Analysis\n\n\nData-Driven Decision Making\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHarlow Malloc\n\n\nMay 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSleep and Employment: Predicting Job Classification through Data Analytics\n\n\n\nPython\n\n\nData Analysis\n\n\nData Science\n\n\nData Visualization\n\n\nTrend Analysis\n\n\nMachine Learning\n\n\nRandom Forest Classification\n\n\nSVM Classifier\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\nTristan O’Malley\n\n\nMay 28, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWine & Feature Engineering\n\n\n\nMachine Learning\n\n\nData Analysis\n\n\nData Science\n\n\nFeature Engineering\n\n\nPredictive Modeling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Analysis of Math Students in Oregon\n\n\n\nData Science\n\n\nData Analysis\n\n\nData Visualization\n\n\nStatistical Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBillboard Top 100’s in 2000\n\n\n\nTime Series Analysis\n\n\nData Analysis\n\n\nData Science\n\n\nData Visualization\n\n\nTrend Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCountry Migration\n\n\n\nData Visualization\n\n\nInteractive Visualization\n\n\nSankey Diagrams\n\n\nData Analysis\n\n\nData Science\n\n\nStatistical Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExpected Population Growth (Inspired by TidyTuesday dataset)\n\n\n\nData Visualization\n\n\nStatistical Analysis\n\n\nData Science\n\n\nData Analysis\n\n\nInteractive Analytics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHuman Resources Analytics Dashboard\n\n\n\nPower BI\n\n\nData Visualization\n\n\nKPI Analysis\n\n\nHR Analytics\n\n\nEmployee Retention\n\n\nTurnover Analysis\n\n\nData-Driven Decision Making\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLabor Utilization Dashboard\n\n\n\nPower BI\n\n\nData Visualization\n\n\nKPI Analysis\n\n\nHR Analytics\n\n\nEmployee Retention\n\n\nTurnover Analysis\n\n\nData-Driven Decision Making\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNetflix Survival Analysis\n\n\n\nData Analysis\n\n\nContent Strategy\n\n\nSurvival Analysis\n\n\nData Visualization\n\n\nPredictive Modeling\n\n\nData Science\n\n\nAudience Segmentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOffer Analysis Dashboard\n\n\n\nPower BI\n\n\nData Visualization\n\n\nKPI Analysis\n\n\nHR Analytics\n\n\nEmployee Retention\n\n\nTurnover Analysis\n\n\nData-Driven Decision Making\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHarlow Malloc\n\n\nMay 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSleep and Employment: Predicting Job Classification through Data Analytics\n\n\n\nPython\n\n\nData Analysis\n\n\nData Science\n\n\nData Visualization\n\n\nTrend Analysis\n\n\nMachine Learning\n\n\nRandom Forest Classification\n\n\nSVM Classifier\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSurvival Analysis of Game of Thrones Characters\n\n\n\nSurvival Analysis\n\n\nGame of Thrones\n\n\nNarrative Analysis\n\n\nStatistical Modeling\n\n\nData Visualization\n\n\nCox Proportional Hazards Model\n\n\nKaplan-Meier Estimator\n\n\nRisk Analysis\n\n\nStorytelling Insights\n\n\nPlot Dynamics\n\n\nThematic Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\nTristan O’Malley\n\n\nMay 28, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWine & Feature Engineering\n\n\n\nMachine Learning\n\n\nData Analysis\n\n\nData Science\n\n\nFeature Engineering\n\n\nPredictive Modeling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
