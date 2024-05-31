@@ -196,7 +196,7 @@ ax.set_ylabel('Frequency')
 plt.show()
 ```
 
-Figure_2.png)
+![](Figure_2.png)
 
 ## Stress Level
 
@@ -232,6 +232,8 @@ plt.show()
 ```
 
 ![](figure_3.png)
+
+
 ## Quality of Sleep
 
 ```{ipython}
