@@ -22,10 +22,6 @@ website:
       - href: about.qmd
         text: CorDarryl E. Hall
     right:
-      - href: Resume.qmd
-      - href: Ref.qmd
-      - href: Resume1.qmd
-        text: Resume
       - href: Services.qmd
         text: Services
       - href: index.qmd
