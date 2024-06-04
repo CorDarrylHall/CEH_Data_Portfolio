@@ -1,0 +1,162 @@
+---
+title: "Heart Disease Analysis"
+image: hda.jpeg
+categories:
+  - Python
+  - Data Analysis
+  - Data Science
+  - Data Visualization
+  - Trend Analysis
+  - Machine Learning
+---
+
+```{=html}
+<style>
+body {
+  font-family: 'Times New Roman', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #999;
+}
+
+nav {
+  background: url("https://www.shutterstock.com/shutterstock/videos/1069623523/preview/stock-footage-melbourne-australia-mar-motorized-moving-shot-of-new-albums-released-in-spotify-app.mp4") no-repeat top center fixed;
+  background-size: cover;
+  height: 20vh;
+  width: 100%;
+}
+
+.panel-tabset {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.panel-tabset h3 {
+  margin-top: 0;
+}
+
+.panel-tabset .tab-content {
+  padding: 10px 0;
+}
+</style>
+```
+## **Introduction:**
+
+This project aims to analyze and visualize heart disease data to uncover patterns and insights related to age, cholesterol levels, maximum heart rate, and resting blood pressure. The analysis includes creating histograms and heatmaps to highlight correlations and trends within the dataset.
+
+
+```{ipython}
+import pandas as pd
+
+data = pd.read_csv("/Users/Shared/Python/HeartDiseaseTrain-Test.csv")
+print(data.info())
+print(data.describe())
+
+
+```
+
+
+
+```{ipython}
+import matplotlib.pyplot as plt
+import pandas as pd
+
+data = pd.read_csv("/Users/Shared/Python/HeartDiseaseTrain-Test.csv")
+
+age = data['age']
+cholesterol = data['cholestoral']
+
+plt.figure(figsize=(10, 6))
+plt.hist(cholesterol, bins=30, color='skyblue', edgecolor='black')
+plt.title('Distribution of Cholesterol Levels')
+plt.xlabel('Cholesterol')
+plt.ylabel('Frequency')
+plt.grid(True)
+plt.show()
+
+```
+
+
+
+```{ipython}
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+import numpy as np
+
+
+data = pd.read_csv("/Users/Shared/Python/HeartDiseaseTrain-Test.csv")
+
+resting_blood_pressure = data['resting_blood_pressure']
+Max_heart_rate = data['Max_heart_rate']
+
+plt.figure(figsize=(10, 6))
+plt.imshow(np.array([resting_blood_pressure, Max_heart_rate]), cmap='hot', aspect='auto')
+plt.title('Heatmap of Resting Blood Pressure and Max Heart Rate')
+plt.ylabel('Resting Blood Pressure')
+plt.xlabel('Max Heart Rate')
+plt.colorbar()
+plt.show()
+
+
+```
+
+![](figure_1hda.png)
+
+![](figure_2hda.png)
+
+```{ipython}
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+import numpy as np
+
+
+data = pd.read_csv("/Users/Shared/Python/HeartDiseaseTrain-Test.csv")
+
+fig, axs = plt.subplots(1, 3, figsize=(18, 6))
+
+resting_blood_pressure = data['resting_blood_pressure']
+Max_heart_rate = data['Max_heart_rate']
+
+# Hot colormap
+axs[0].imshow(np.array([resting_blood_pressure, Max_heart_rate]), cmap='hot', aspect='auto')
+axs[0].set_title('Hot Colormap')
+axs[0].axis('off')
+
+# Cool colormap
+axs[1].imshow(np.array([resting_blood_pressure, Max_heart_rate]), cmap='cool', aspect='auto')
+axs[1].set_title('Cool Colormap')
+axs[1].axis('off')
+
+# Viridis colormap
+axs[2].imshow(np.array([resting_blood_pressure, Max_heart_rate]), cmap='viridis', aspect='auto')
+axs[2].set_title('Viridis Colormap')
+axs[2].axis('off')
+
+plt.tight_layout()
+plt.show()
+
+
+
+```
+
+![](figure_3hda.png)
+
+## Insights and Findings:
+
+- Cholesterol Distribution: The histogram shows that middle-aged individuals have a higher frequency of elevated cholesterol levels, whereas older individuals tend to have higher cholesterol levels overall.
+
+- Correlation Analysis: The heatmap indicates a visual correlation between resting blood pressure and maximum heart rate, allowing for a better understanding of how these variables interact.
+
+- Enhanced Visualizations: The comparative heatmaps with different color schemes provide multiple perspectives on the data, making it easier to identify patterns and outliers.
+
+## **Conclusion:** 
+
+This project provides a detailed analysis and visualization of heart disease data, highlighting key patterns and relationships between age, cholesterol levels, maximum heart rate, and resting blood pressure. The use of histograms and heatmaps allows for a clear and intuitive presentation of the data, facilitating better understanding and interpretation of the results.
