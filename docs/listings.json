@@ -14,7 +14,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Analysis of Global Happiness Factors/GHF.html",
       "/posts/Oregon Math Analysis/ORMATH.html",
+      "/posts/Veteran Compensation Benefits/VCB.html",
       "/posts/Billboard's Top 100 (2000)/bill.html",
       "/posts/Country Migration/sank.html",
       "/posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html",

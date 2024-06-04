@@ -25,7 +25,6 @@ page-layout: article
 title-block-banner: false
 ---
 
-
 ```{=html}
 <style>
 nav {

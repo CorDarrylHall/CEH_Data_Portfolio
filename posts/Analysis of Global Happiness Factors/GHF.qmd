@@ -1,0 +1,125 @@
+---
+title: "Analysis of Global Happiness Factors"
+image: ghf.png
+categories:
+  - Python
+  - Data Analysis
+  - Data Science
+  - Data Visualization
+  - Trend Analysis
+  - Machine Learning
+---
+
+```{=html}
+<style>
+body {
+  font-family: 'Times New Roman', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #999;
+}
+
+nav {
+  background: url("https://www.shutterstock.com/shutterstock/videos/1069623523/preview/stock-footage-melbourne-australia-mar-motorized-moving-shot-of-new-albums-released-in-spotify-app.mp4") no-repeat top center fixed;
+  background-size: cover;
+  height: 20vh;
+  width: 100%;
+}
+
+.panel-tabset {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.panel-tabset h3 {
+  margin-top: 0;
+}
+
+.panel-tabset .tab-content {
+  padding: 10px 0;
+}
+</style>
+```
+## **Introduction:**
+
+This project aims to analyze the factors contributing to the happiness of different countries using the World Happiness Report data from 2016. The analysis focuses on identifying key metrics and their impact on the overall happiness scores of countries.
+
+
+```{ipython}
+import pandas as pd
+data = pd.read_csv("/Users/Shared/Python/Mid-review 26-6-2023/world_happiness_2016.csv")
+
+
+```
+
+
+
+```{ipython}
+import pandas as pd
+data = pd.read_csv("/Users/Shared/Python/Mid-review 26-6-2023/world_happiness_2016.csv")
+print(data.info())
+print(data.describe())
+```
+
+## Key Statistics:
+The summary statistics provide insights into the distribution of happiness scores and related factors across different countries.
+
+- Happiness Rank ranges from 1 to 157.
+- Happiness Score ranges from 2.905 to 7.526.
+- Economy (GDP per Capita) ranges from 0 to 1.82427.
+- Family ranges from 0 to 1.18326.
+- Health (Life Expectancy) ranges from 0 to 0.95277.
+- Freedom ranges from 0 to 0.60848.
+- Trust (Government Corruption) ranges from 0 to 0.50521.
+- Generosity ranges from 0 to 0.81971.
+- Dystopia Residual ranges from 0.81789 to 3.83772.
+
+## Correlation of Numeric Variables
+
+```{ipython}
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+
+data = pd.read_csv("/Users/Shared/Python/Mid-review 26-6-2023/world_happiness_2016.csv")
+
+plt.figure(figsize=(10, 6))
+sns.histplot(data['Happiness Score'], kde=True)
+plt.title('Distribution of Happiness Scores')
+plt.xlabel('Happiness Score')
+plt.ylabel('Frequency')
+plt.show()
+
+sns.pairplot(data[['Happiness Score', 'Economy (GDP per Capita)', 'Family', 'Health (Life Expectancy)']])
+plt.show()
+
+plt.figure(figsize=(10, 6))
+sns.heatmap(data.corr(), annot=True, cmap='coolwarm', linewidths=0.5)
+plt.title('Correlation Matrix')
+plt.show()
+
+```
+
+![](figure_ghf1.png)
+
+![](figure_ghf2.png)
+
+## Insights and Findings:
+
+- Countries with higher GDP per Capita generally have higher Happiness Scores.
+
+- Strong family support and better health (life expectancy) are positively correlated with higher Happiness Scores.
+
+- Freedom and Trust in Government also play significant roles in determining happiness levels.
+
+- Generosity and Dystopia Residual show moderate to low correlation with Happiness Scores.
+
+## **Conclusion:** 
+
+This project provides a comprehensive analysis of the factors influencing happiness across different countries. The findings highlight the importance of economic stability, family support, health, and governance in enhancing the happiness of populations. The visualizations and statistical analyses offer valuable insights that can inform policymakers and researchers in their efforts to improve global well-being.

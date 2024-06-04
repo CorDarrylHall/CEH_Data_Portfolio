@@ -70,6 +70,34 @@
     "text": "Conclusion\nThis analysis provides a clear view of the songs that dominated the Billboard Top 100 charts in the year 2000. By identifying the tracks that remained at #1 the longest, we can better understand the music trends and preferences of that time. This type of analysis can be expanded to include other years or additional chart metrics to gain further insights into the evolution of popular music."
   },
   {
+    "objectID": "posts/Veteran Compensation Benefits/VCB.html",
+    "href": "posts/Veteran Compensation Benefits/VCB.html",
+    "title": "Analysis of Veteran Compensation Benefits by Service Period and Location",
+    "section": "",
+    "text": "This project aims to analyze the distribution of veterans receiving compensation benefits from the Veterans Benefits Administration (VBA) as of the end of Fiscal Year 2022. The analysis focuses on identifying the locations with the highest count of veterans and the periods of service with the most beneficiaries.\nimport pandas as pd\npresdata = pd.read_csv(\"/Users/Shared/Python/Mid-review 26-6-2023/Compensation_Service_Veteran_Count_By_Period_of_Service_and_Location.csv\")\npresdata.info()\n\nprint(presdata.head())"
+  },
+  {
+    "objectID": "posts/Veteran Compensation Benefits/VCB.html#data-insights",
+    "href": "posts/Veteran Compensation Benefits/VCB.html#data-insights",
+    "title": "Analysis of Veteran Compensation Benefits by Service Period and Location",
+    "section": "Data Insights:",
+    "text": "Data Insights:\nThe data provides a detailed count of veterans by state or country of residence and by their period of service (e.g., GWOT, Gulf War, Korean Conflict, Peacetime Era, Vietnam Era)."
+  },
+  {
+    "objectID": "posts/Veteran Compensation Benefits/VCB.html#inquiry-based-analysis",
+    "href": "posts/Veteran Compensation Benefits/VCB.html#inquiry-based-analysis",
+    "title": "Analysis of Veteran Compensation Benefits by Service Period and Location",
+    "section": "Inquiry-Based Analysis:",
+    "text": "Inquiry-Based Analysis:\n\nQuestion 1: What residence has the highest count of veterans on the rolls with VBA for compensation benefits as of the end of Fiscal Year 2022?\nQuestion 2: What period of service has the highest count of veterans on the rolls with VBA for compensation benefits as of the end of Fiscal Year 2022?\n\nimport pandas as pd\n\npresdata = pd.read_csv(\"/Users/Shared/Python/Mid-review 26-6-2023/Compensation_Service_Veteran_Count_By_Period_of_Service_and_Location.csv\")\n\n# Identifying the residence with the highest count of veterans\ntop_residence = presdata.groupby('RESIDENCE')['NUMBER_OF_VETERANS'].sum().idxmax()\ntop_residence_count = presdata.groupby('RESIDENCE')['NUMBER_OF_VETERANS'].sum().max()\n\n# Identifying the period of service with the highest count of veterans\ntop_pos = presdata.groupby('POS')['NUMBER_OF_VETERANS'].sum().idxmax()\ntop_pos_count = presdata.groupby('POS')['NUMBER_OF_VETERANS'].sum().max()\n\nprint(f\"Residence with the highest count of veterans: {top_residence} ({top_residence_count} veterans)\")\nprint(f\"Period of Service with the highest count of veterans: {top_pos} ({top_pos_count} veterans)\")\n\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport pandas as pd\n\npresdata = pd.read_csv(\"/Users/Shared/Python/Mid-review 26-6-2023/Compensation_Service_Veteran_Count_By_Period_of_Service_and_Location.csv\")\n\n# Bar chart for veterans by residence\nplt.figure(figsize=(14, 8))\nsns.barplot(x=presdata.groupby('RESIDENCE')['NUMBER_OF_VETERANS'].sum().index, \n            y=presdata.groupby('RESIDENCE')['NUMBER_OF_VETERANS'].sum().values)\nplt.xticks(rotation=90)\nplt.title('Count of Veterans by Residence')\nplt.xlabel('Residence')\nplt.ylabel('Number of Veterans')\nplt.show()\n\n# Bar chart for veterans by period of service\nplt.figure(figsize=(10, 6))\nsns.barplot(x=presdata.groupby('POS')['NUMBER_OF_VETERANS'].sum().index, \n            y=presdata.groupby('POS')['NUMBER_OF_VETERANS'].sum().values)\nplt.title('Count of Veterans by Period of Service')\nplt.xlabel('Period of Service')\nplt.ylabel('Number of Veterans')\nplt.show()\n\n# Heatmap for veterans distribution\npivot_table = presdata.pivot_table(index='RESIDENCE', columns='POS', values='NUMBER_OF_VETERANS', aggfunc='sum', fill_value=0)\nplt.figure(figsize=(16, 12))\nsns.heatmap(pivot_table, annot=True, fmt=\"d\", cmap='YlGnBu')\nplt.title('Distribution of Veterans by Residence and Period of Service')\nplt.xlabel('Period of Service')\nplt.ylabel('Residence')\nplt.show()\n\n\n\n\n ## Insights and Findings:\n\nResidence Analysis: Identified the states or countries with the highest number of veterans receiving compensation benefits.\nPeriod of Service Analysis: Determined which periods of service had the largest populations of veterans on the rolls.\nDistribution Patterns: Visualized the distribution of veterans across different regions and service periods to identify any significant patterns or trends."
+  },
+  {
+    "objectID": "posts/Veteran Compensation Benefits/VCB.html#conclusion",
+    "href": "posts/Veteran Compensation Benefits/VCB.html#conclusion",
+    "title": "Analysis of Veteran Compensation Benefits by Service Period and Location",
+    "section": "Conclusion:",
+    "text": "Conclusion:\nThis project provides a comprehensive analysis of the distribution of veterans receiving compensation benefits, highlighting key locations and service periods with the highest counts. The visualizations and statistical analyses offer valuable insights that can inform stakeholders and policymakers in their efforts to support veteran communities."
+  },
+  {
     "objectID": "posts/GoT (Game of Thrones) Analysis/GoT.html",
     "href": "posts/GoT (Game of Thrones) Analysis/GoT.html",
     "title": "Survival Analysis of Game of Thrones Characters",
@@ -322,6 +350,41 @@
     "text": "Conclusion:\nUnderstanding viewer behavior through survival analysis enables filmmakers to tailor their content to audience preferences, enhancing engagement and retention. By leveraging these insights, creators can make informed decisions about the types of movies to produce and the target audiences to focus on, ultimately leading to more successful and engaging content on platforms like Netflix."
   },
   {
+    "objectID": "posts/Analysis of Global Happiness Factors/GHF.html",
+    "href": "posts/Analysis of Global Happiness Factors/GHF.html",
+    "title": "Analysis of Global Happiness Factors",
+    "section": "",
+    "text": "This project aims to analyze the factors contributing to the happiness of different countries using the World Happiness Report data from 2016. The analysis focuses on identifying key metrics and their impact on the overall happiness scores of countries.\nimport pandas as pd\ndata = pd.read_csv(\"/Users/Shared/Python/Mid-review 26-6-2023/world_happiness_2016.csv\")\n\n\nimport pandas as pd\ndata = pd.read_csv(\"/Users/Shared/Python/Mid-review 26-6-2023/world_happiness_2016.csv\")\nprint(data.info())\nprint(data.describe())"
+  },
+  {
+    "objectID": "posts/Analysis of Global Happiness Factors/GHF.html#key-statistics",
+    "href": "posts/Analysis of Global Happiness Factors/GHF.html#key-statistics",
+    "title": "Analysis of Global Happiness Factors",
+    "section": "Key Statistics:",
+    "text": "Key Statistics:\nThe summary statistics provide insights into the distribution of happiness scores and related factors across different countries.\n\nHappiness Rank ranges from 1 to 157.\nHappiness Score ranges from 2.905 to 7.526.\nEconomy (GDP per Capita) ranges from 0 to 1.82427.\nFamily ranges from 0 to 1.18326.\nHealth (Life Expectancy) ranges from 0 to 0.95277.\nFreedom ranges from 0 to 0.60848.\nTrust (Government Corruption) ranges from 0 to 0.50521.\nGenerosity ranges from 0 to 0.81971.\nDystopia Residual ranges from 0.81789 to 3.83772."
+  },
+  {
+    "objectID": "posts/Analysis of Global Happiness Factors/GHF.html#correlation-of-numeric-variables",
+    "href": "posts/Analysis of Global Happiness Factors/GHF.html#correlation-of-numeric-variables",
+    "title": "Analysis of Global Happiness Factors",
+    "section": "Correlation of Numeric Variables",
+    "text": "Correlation of Numeric Variables\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport pandas as pd\n\ndata = pd.read_csv(\"/Users/Shared/Python/Mid-review 26-6-2023/world_happiness_2016.csv\")\n\nplt.figure(figsize=(10, 6))\nsns.histplot(data['Happiness Score'], kde=True)\nplt.title('Distribution of Happiness Scores')\nplt.xlabel('Happiness Score')\nplt.ylabel('Frequency')\nplt.show()\n\nsns.pairplot(data[['Happiness Score', 'Economy (GDP per Capita)', 'Family', 'Health (Life Expectancy)']])\nplt.show()\n\nplt.figure(figsize=(10, 6))\nsns.heatmap(data.corr(), annot=True, cmap='coolwarm', linewidths=0.5)\nplt.title('Correlation Matrix')\nplt.show()"
+  },
+  {
+    "objectID": "posts/Analysis of Global Happiness Factors/GHF.html#insights-and-findings",
+    "href": "posts/Analysis of Global Happiness Factors/GHF.html#insights-and-findings",
+    "title": "Analysis of Global Happiness Factors",
+    "section": "Insights and Findings:",
+    "text": "Insights and Findings:\n\nCountries with higher GDP per Capita generally have higher Happiness Scores.\nStrong family support and better health (life expectancy) are positively correlated with higher Happiness Scores.\nFreedom and Trust in Government also play significant roles in determining happiness levels.\nGenerosity and Dystopia Residual show moderate to low correlation with Happiness Scores."
+  },
+  {
+    "objectID": "posts/Analysis of Global Happiness Factors/GHF.html#conclusion",
+    "href": "posts/Analysis of Global Happiness Factors/GHF.html#conclusion",
+    "title": "Analysis of Global Happiness Factors",
+    "section": "Conclusion:",
+    "text": "Conclusion:\nThis project provides a comprehensive analysis of the factors influencing happiness across different countries. The findings highlight the importance of economic stability, family support, health, and governance in enhancing the happiness of populations. The visualizations and statistical analyses offer valuable insights that can inform policymakers and researchers in their efforts to improve global well-being."
+  },
+  {
     "objectID": "posts/Labor Utilization Dashboard/powerbila.html",
     "href": "posts/Labor Utilization Dashboard/powerbila.html",
     "title": "Labor Utilization Dashboard",
@@ -406,6 +469,13 @@
     "text": "Sleep Duration\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfile_path = '/Users/Shared/Python/Sleep_health_and_lifestyle_dataset.csv'\nsleep = pd.read_csv(file_path)\n\n# Look at the distribution based on Age\nfig, ax = plt.subplots(figsize=(10, 5))\nax.hist(sleep['Sleep Duration'], bins=20)\nax.set_title('Distribution of Sleep Duration')\nax.set_xlabel('Sleep Duration')\nax.set_ylabel('Frequency')\nplt.show()\n#Figure out who is 8.5?"
   },
   {
+    "objectID": "posts/Sleep and Employment: Predicting Job Classification through Data Analytics/Sleeping.html#quality-of-sleep",
+    "href": "posts/Sleep and Employment: Predicting Job Classification through Data Analytics/Sleeping.html#quality-of-sleep",
+    "title": "Sleep and Employment: Predicting Job Classification through Data Analytics",
+    "section": "Quality of Sleep",
+    "text": "Quality of Sleep\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfile_path = '/Users/Shared/Python/Sleep_health_and_lifestyle_dataset.csv'\nsleep = pd.read_csv(file_path)\n\nsleep.groupby('Quality of Sleep').agg(\n    num_individuals=('Quality of Sleep', 'size')\n).reset_index()"
+  },
+  {
     "objectID": "posts/Sleep and Employment: Predicting Job Classification through Data Analytics/Sleeping.html#gender",
     "href": "posts/Sleep and Employment: Predicting Job Classification through Data Analytics/Sleeping.html#gender",
     "title": "Sleep and Employment: Predicting Job Classification through Data Analytics",
@@ -473,7 +543,7 @@
     "href": "index.html",
     "title": "CorDarryl Hall’s Data Portfolio",
     "section": "",
-    "text": "Analysis of Math Students in Oregon\n\n\n\nData Science\n\n\nData Analysis\n\n\nData Visualization\n\n\nStatistical Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBillboard Top 100’s in 2000\n\n\n\nTime Series Analysis\n\n\nData Analysis\n\n\nData Science\n\n\nData Visualization\n\n\nTrend Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCountry Migration\n\n\n\nData Visualization\n\n\nInteractive Visualization\n\n\nSankey Diagrams\n\n\nData Analysis\n\n\nData Science\n\n\nStatistical Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExpected Population Growth (Inspired by TidyTuesday dataset)\n\n\n\nData Visualization\n\n\nStatistical Analysis\n\n\nData Science\n\n\nData Analysis\n\n\nInteractive Analytics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHuman Resources Analytics Dashboard\n\n\n\nPower BI\n\n\nData Visualization\n\n\nKPI Analysis\n\n\nHR Analytics\n\n\nEmployee Retention\n\n\nTurnover Analysis\n\n\nData-Driven Decision Making\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLabor Utilization Dashboard\n\n\n\nPower BI\n\n\nData Visualization\n\n\nKPI Analysis\n\n\nHR Analytics\n\n\nEmployee Retention\n\n\nTurnover Analysis\n\n\nData-Driven Decision Making\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNetflix Survival Analysis\n\n\n\nData Analysis\n\n\nContent Strategy\n\n\nSurvival Analysis\n\n\nData Visualization\n\n\nPredictive Modeling\n\n\nData Science\n\n\nAudience Segmentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOffer Analysis Dashboard\n\n\n\nPower BI\n\n\nData Visualization\n\n\nKPI Analysis\n\n\nHR Analytics\n\n\nEmployee Retention\n\n\nTurnover Analysis\n\n\nData-Driven Decision Making\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSleep and Employment: Predicting Job Classification through Data Analytics\n\n\n\nPython\n\n\nData Analysis\n\n\nData Science\n\n\nData Visualization\n\n\nTrend Analysis\n\n\nMachine Learning\n\n\nRandom Forest Classification\n\n\nSVM Classifier\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSurvival Analysis of Game of Thrones Characters\n\n\n\nSurvival Analysis\n\n\nGame of Thrones\n\n\nNarrative Analysis\n\n\nStatistical Modeling\n\n\nData Visualization\n\n\nCox Proportional Hazards Model\n\n\nKaplan-Meier Estimator\n\n\nRisk Analysis\n\n\nStorytelling Insights\n\n\nPlot Dynamics\n\n\nThematic Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWine & Feature Engineering\n\n\n\nMachine Learning\n\n\nData Analysis\n\n\nData Science\n\n\nFeature Engineering\n\n\nPredictive Modeling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Analysis of Global Happiness Factors\n\n\n\nPython\n\n\nData Analysis\n\n\nData Science\n\n\nData Visualization\n\n\nTrend Analysis\n\n\nMachine Learning\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnalysis of Math Students in Oregon\n\n\n\nData Science\n\n\nData Analysis\n\n\nData Visualization\n\n\nStatistical Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnalysis of Veteran Compensation Benefits by Service Period and Location\n\n\n\nPython\n\n\nData Analysis\n\n\nData Science\n\n\nData Visualization\n\n\nTrend Analysis\n\n\nMachine Learning\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBillboard Top 100’s in 2000\n\n\n\nTime Series Analysis\n\n\nData Analysis\n\n\nData Science\n\n\nData Visualization\n\n\nTrend Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCountry Migration\n\n\n\nData Visualization\n\n\nInteractive Visualization\n\n\nSankey Diagrams\n\n\nData Analysis\n\n\nData Science\n\n\nStatistical Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExpected Population Growth (Inspired by TidyTuesday dataset)\n\n\n\nData Visualization\n\n\nStatistical Analysis\n\n\nData Science\n\n\nData Analysis\n\n\nInteractive Analytics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHuman Resources Analytics Dashboard\n\n\n\nPower BI\n\n\nData Visualization\n\n\nKPI Analysis\n\n\nHR Analytics\n\n\nEmployee Retention\n\n\nTurnover Analysis\n\n\nData-Driven Decision Making\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLabor Utilization Dashboard\n\n\n\nPower BI\n\n\nData Visualization\n\n\nKPI Analysis\n\n\nHR Analytics\n\n\nEmployee Retention\n\n\nTurnover Analysis\n\n\nData-Driven Decision Making\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNetflix Survival Analysis\n\n\n\nData Analysis\n\n\nContent Strategy\n\n\nSurvival Analysis\n\n\nData Visualization\n\n\nPredictive Modeling\n\n\nData Science\n\n\nAudience Segmentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOffer Analysis Dashboard\n\n\n\nPower BI\n\n\nData Visualization\n\n\nKPI Analysis\n\n\nHR Analytics\n\n\nEmployee Retention\n\n\nTurnover Analysis\n\n\nData-Driven Decision Making\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSleep and Employment: Predicting Job Classification through Data Analytics\n\n\n\nPython\n\n\nData Analysis\n\n\nData Science\n\n\nData Visualization\n\n\nTrend Analysis\n\n\nMachine Learning\n\n\nRandom Forest Classification\n\n\nSVM Classifier\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSurvival Analysis of Game of Thrones Characters\n\n\n\nSurvival Analysis\n\n\nGame of Thrones\n\n\nNarrative Analysis\n\n\nStatistical Modeling\n\n\nData Visualization\n\n\nCox Proportional Hazards Model\n\n\nKaplan-Meier Estimator\n\n\nRisk Analysis\n\n\nStorytelling Insights\n\n\nPlot Dynamics\n\n\nThematic Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWine & Feature Engineering\n\n\n\nMachine Learning\n\n\nData Analysis\n\n\nData Science\n\n\nFeature Engineering\n\n\nPredictive Modeling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -509,12 +579,5 @@
     "title": "CorDarryl E. Hall",
     "section": "About Me",
     "text": "About Me\nAs a Business Analyst and Program Manager, I am seeking new opportunities in Program Management where I can leverage my expertise in data analytics to provide strategic insights. My extensive experience includes serving as an Operations Program Manager, where I successfully led multi-disciplinary projects, coordinated stakeholders, and drove operational excellence. I have effectively managed the execution of strategic engineering objectives using tools such as Smartsheet and Lucid Planner, resulting in significant achievements like increasing Intel NUC device production from $4 million to $6 million over 10 years and orchestrating collaboration among 13 cross-functional teams to achieve a 27% revenue increase over three quarters. At Lam Research, I excelled in leading technical collaborations that resulted in a new contract management system and optimizing workflows to enhance business efficacy by 44%.\nIn my roles, I have showcased my proficiency in managing intricate compensation data processes and reporting at both Lam Research and Intel Corporation. I utilized tools like Power BI and Tableau and developed dashboards using languages such as R, Python, and SQL. As a Program Manager at Intel, I led a team to achieve record-breaking milestones in product introductions. My background also includes serving in the United States Navy, where I managed extensive equipment inventories and led multiple deployments. Additionally, I hold an MBA from Willamette University, where I consulted for the Boys & Girls Club, saving them over $500K.\nI am enthusiastic about discussing how I can contribute to your company’s success and look forward to potential collaborations."
-  },
-  {
-    "objectID": "posts/Sleep and Employment: Predicting Job Classification through Data Analytics/Sleeping.html#quality-of-sleep",
-    "href": "posts/Sleep and Employment: Predicting Job Classification through Data Analytics/Sleeping.html#quality-of-sleep",
-    "title": "Sleep and Employment: Predicting Job Classification through Data Analytics",
-    "section": "Quality of Sleep",
-    "text": "Quality of Sleep\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfile_path = '/Users/Shared/Python/Sleep_health_and_lifestyle_dataset.csv'\nsleep = pd.read_csv(file_path)\n\nsleep.groupby('Quality of Sleep').agg(\n    num_individuals=('Quality of Sleep', 'size')\n).reset_index()"
   }
 ]

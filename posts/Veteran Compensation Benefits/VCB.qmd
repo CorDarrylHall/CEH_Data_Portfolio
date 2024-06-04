@@ -1,0 +1,147 @@
+---
+title: "Analysis of Veteran Compensation Benefits by Service Period and Location"
+image: VCB.png
+categories:
+  - Python
+  - Data Analysis
+  - Data Science
+  - Data Visualization
+  - Trend Analysis
+  - Machine Learning
+---
+
+```{=html}
+<style>
+body {
+  font-family: 'Times New Roman', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #999;
+}
+
+nav {
+  background: url("https://www.shutterstock.com/shutterstock/videos/1069623523/preview/stock-footage-melbourne-australia-mar-motorized-moving-shot-of-new-albums-released-in-spotify-app.mp4") no-repeat top center fixed;
+  background-size: cover;
+  height: 20vh;
+  width: 100%;
+}
+
+.panel-tabset {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.panel-tabset h3 {
+  margin-top: 0;
+}
+
+.panel-tabset .tab-content {
+  padding: 10px 0;
+}
+</style>
+```
+## **Introduction:**
+
+This project aims to analyze the distribution of veterans receiving compensation benefits from the Veterans Benefits Administration (VBA) as of the end of Fiscal Year 2022. The analysis focuses on identifying the locations with the highest count of veterans and the periods of service with the most beneficiaries.
+
+
+```{ipython}
+import pandas as pd
+presdata = pd.read_csv("/Users/Shared/Python/Mid-review 26-6-2023/Compensation_Service_Veteran_Count_By_Period_of_Service_and_Location.csv")
+presdata.info()
+
+print(presdata.head())
+
+
+```
+
+## Data Insights:
+
+The data provides a detailed count of veterans by state or country of residence and by their period of service (e.g., GWOT, Gulf War, Korean Conflict, Peacetime Era, Vietnam Era).
+
+## Inquiry-Based Analysis:
+
+- Question 1: What residence has the highest count of veterans on the rolls with VBA for compensation benefits as of the end of Fiscal Year 2022?
+
+- Question 2: What period of service has the highest count of veterans on the rolls with VBA for compensation benefits as of the end of Fiscal Year 2022?
+
+```{ipython}
+import pandas as pd
+
+presdata = pd.read_csv("/Users/Shared/Python/Mid-review 26-6-2023/Compensation_Service_Veteran_Count_By_Period_of_Service_and_Location.csv")
+
+# Identifying the residence with the highest count of veterans
+top_residence = presdata.groupby('RESIDENCE')['NUMBER_OF_VETERANS'].sum().idxmax()
+top_residence_count = presdata.groupby('RESIDENCE')['NUMBER_OF_VETERANS'].sum().max()
+
+# Identifying the period of service with the highest count of veterans
+top_pos = presdata.groupby('POS')['NUMBER_OF_VETERANS'].sum().idxmax()
+top_pos_count = presdata.groupby('POS')['NUMBER_OF_VETERANS'].sum().max()
+
+print(f"Residence with the highest count of veterans: {top_residence} ({top_residence_count} veterans)")
+print(f"Period of Service with the highest count of veterans: {top_pos} ({top_pos_count} veterans)")
+
+```
+
+
+
+```{ipython}
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+
+presdata = pd.read_csv("/Users/Shared/Python/Mid-review 26-6-2023/Compensation_Service_Veteran_Count_By_Period_of_Service_and_Location.csv")
+
+# Bar chart for veterans by residence
+plt.figure(figsize=(14, 8))
+sns.barplot(x=presdata.groupby('RESIDENCE')['NUMBER_OF_VETERANS'].sum().index, 
+            y=presdata.groupby('RESIDENCE')['NUMBER_OF_VETERANS'].sum().values)
+plt.xticks(rotation=90)
+plt.title('Count of Veterans by Residence')
+plt.xlabel('Residence')
+plt.ylabel('Number of Veterans')
+plt.show()
+
+# Bar chart for veterans by period of service
+plt.figure(figsize=(10, 6))
+sns.barplot(x=presdata.groupby('POS')['NUMBER_OF_VETERANS'].sum().index, 
+            y=presdata.groupby('POS')['NUMBER_OF_VETERANS'].sum().values)
+plt.title('Count of Veterans by Period of Service')
+plt.xlabel('Period of Service')
+plt.ylabel('Number of Veterans')
+plt.show()
+
+# Heatmap for veterans distribution
+pivot_table = presdata.pivot_table(index='RESIDENCE', columns='POS', values='NUMBER_OF_VETERANS', aggfunc='sum', fill_value=0)
+plt.figure(figsize=(16, 12))
+sns.heatmap(pivot_table, annot=True, fmt="d", cmap='YlGnBu')
+plt.title('Distribution of Veterans by Residence and Period of Service')
+plt.xlabel('Period of Service')
+plt.ylabel('Residence')
+plt.show()
+
+
+```
+
+![](figure_vcb1.png)
+
+![](figure_vcb2.png)
+
+![](figure_vcb3.png)
+## Insights and Findings:
+
+- Residence Analysis: Identified the states or countries with the highest number of veterans receiving compensation benefits.
+
+- Period of Service Analysis: Determined which periods of service had the largest populations of veterans on the rolls.
+
+- Distribution Patterns: Visualized the distribution of veterans across different regions and service periods to identify any significant patterns or trends.
+
+## **Conclusion:** 
+
+This project provides a comprehensive analysis of the distribution of veterans receiving compensation benefits, highlighting key locations and service periods with the highest counts. The visualizations and statistical analyses offer valuable insights that can inform stakeholders and policymakers in their efforts to support veteran communities.
