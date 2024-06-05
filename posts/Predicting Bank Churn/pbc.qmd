@@ -1,0 +1,150 @@
+---
+title: "Predicting Bank Customer Churn"
+image: pbc.jpeg
+categories: 
+  - Machine Learning
+  - Data Analysis
+  - Data Science
+  - Feature Engineering
+  - Predictive Modeling
+---
+
+```{=html}
+<style>
+body {
+  font-family: 'Times New Roman', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #999;
+}
+
+nav {
+  background: url("https://www.shutterstock.com/shutterstock/videos/1069623523/preview/stock-footage-melbourne-australia-mar-motorized-moving-shot-of-new-albums-released-in-spotify-app.mp4") no-repeat top center fixed;
+  background-size: cover;
+  height: 20vh;
+  width: 100%;
+}
+
+.panel-tabset {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.panel-tabset h3 {
+  margin-top: 0;
+}
+
+.panel-tabset .tab-content {
+  padding: 10px 0;
+}
+</style>
+```
+## Overview
+
+The goal of this project is to predict customer churn in a bank using various machine learning techniques. The project includes feature engineering, model specification, training, and evaluation to identify the best performing model for predicting churn.
+
+```{r setup, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
+library(caret)
+library(pROC)
+library(MLmetrics)
+library(fastDummies)
+bank = read_rds("/Users/Shared/Data 505/BankChurners.rds")
+
+```
+
+
+```{r}
+# Create additional features
+banko <- bank %>%
+  mutate(age2 = Customer_Age^2) %>%
+  select(Customer_Age, age2, Dependent_count, Churn)
+
+# Dummy encode categorical variables and apply PCA
+bank = read_rds("/Users/Shared/Data 505/BankChurners.rds") %>%
+  mutate(Churn = Churn == "yes") %>%
+  dummy_cols(remove_selected_columns = TRUE)
+
+pr_bank = prcomp(select(bank, -Churn), scale = TRUE, center = TRUE)
+
+screeplot(pr_bank, type = "lines")
+
+prc <- bind_cols(select(bank, Churn), as.data.frame(pr_bank$x)) %>%
+  select(1:5) %>%
+  rename("Gender" = PC1, "Card_Category" = PC2, "Income_Category" = PC3, "Credit_Limit" = PC4)
+
+head(prc)
+
+
+```
+
+
+
+```{r}
+ctrl <- trainControl(method = "cv", number = 3, classProbs = TRUE, summaryFunction = twoClassSummary)
+set.seed(504)
+
+bank_index <- createDataPartition(banko$Churn, p = 0.80, list = FALSE)
+train <- banko[bank_index, ]
+test <- banko[-bank_index, ]
+
+# Train Random Forest model
+fit <- train(Churn ~ .,
+             data = train,
+             method = "rf",
+             ntree = 20,
+             tuneLength = 3,
+             metric = "ROC",
+             trControl = ctrl)
+
+fit
+confusionMatrix(predict(fit, test), factor(test$Churn))
+
+
+```
+
+
+```{r, warning=FALSE, message=FALSE}
+print(fit)
+print(fit$bestTune)
+
+
+```
+
+
+```{r, warning=FALSE, message=FALSE}
+set.seed(1504)
+
+bank_index <- createDataPartition(banko$Churn, p = 0.80, list = FALSE)
+train <- banko[bank_index, ]
+test <- banko[-bank_index, ]
+
+# Re-fit model using best hyperparameters
+fit_final <- train(Churn ~ .,
+                   data = train,
+                   method = "rf",
+                   tuneGrid = fit$bestTune,
+                   metric = "ROC",
+                   trControl = ctrl)
+
+myRoc <- roc(test$Churn, predict(fit_final, test, type = "prob")[, 2])
+
+plot(myRoc)
+auc(myRoc)
+
+```
+
+## Conclusion:
+
+This project successfully demonstrated the use of machine learning techniques to predict bank customer churn. Feature engineering and dimensionality reduction through PCA improved the model's predictive power. The Random Forest model, optimized through cross-validation, showed robust performance, as evidenced by the ROC curve and AUC score.
+
+## Future Work:
+
+Further enhancements could include exploring other machine learning algorithms, feature selection techniques, and hyperparameter tuning methods. Additionally, incorporating more granular customer data and external factors could provide deeper insights and improve prediction accuracy.
