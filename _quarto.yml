@@ -32,7 +32,7 @@ editor: visual
 format:
   html:
     css: styles.css
-    mainfont: cursive
+    mainfont: sans-serif
     theme:
       light: flatly
       dark: darkly
