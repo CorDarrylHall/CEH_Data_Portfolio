@@ -17,7 +17,7 @@ about:
 
 ## Introduction
 
-CorDarryl E. Hall is a Senior Business Analyst/Program Manager at Lam Research. When not innovating on how to improve his data/program management techniques, CorDarryl enjoy various hobbies such as chess, architecture, and skydiving, and spending time with his two dogs.
+CorDarryl E. Hall is a distinguished Business/Data Analyst with a robust expertise in the ability to identify and leverage appropriate sources of data and contribute to the development of recommendations. in creating interactive data analytics dashboards to measure and improve operations performance. Specialized in developing Business Intelligence (BI) while utilizing Python, R, and SQL for statistical and machine learning modeling, adept at designing and monitoring dashboards for AI tool outputs, and proficient in creating optimized training datasets for AI models. Experienced in orchestrating program communications, overseeing daily operational tasks, and driving continuous improvements. Excel in managing complex, cross-disciplinary projects and fostering collaboration among diverse teams. When not innovating on how to improve his data/program management techniques, CorDarryl enjoy various hobbies such as chess, architecture, skydiving, and spending time with his two dogs.
 
 ## Education
 
@@ -38,7 +38,7 @@ B.S in Business Administration \| December 2011
 #### **Lam Research**
 
 | Senior Business Analyst (Contract)
-| November 2023 - present
+| November 2023 - Jun 2024
 
 #### **Intel Corporation**
 
@@ -54,11 +54,11 @@ B.S in Business Administration \| December 2011
 
 #### ***Technical Skills***
 
-| SQL, Python, DAX, R, SAP, Power BI, Tableau, Microsoft 365 Office Suite, Smartsheet, Lucid Planner
+| SQL, Python, DAX, R, SAP, Git, HTML, PowerBI, Tableau, JavaScript, Microsoft 365, Smartsheet, Lucid Planner
 
 #### ***Certifications***
 
-| PGMP (Program Management Certification), Scrum Master
+| PGMP (Program Management Certification) - In Progress , Scrum Master
 
 #### ***Credentials***
 
@@ -70,7 +70,7 @@ B.S in Business Administration \| December 2011
 
 ## About Me
 
-As a Business Analyst and Program Manager, I am seeking new opportunities in Program Management where I can leverage my expertise in data analytics to provide strategic insights. My extensive experience includes serving as an Operations Program Manager, where I successfully lead complex, multi-disciplinary projects from start to finish --- working with stakeholders to plan requirements, manage project schedules, identify risks, and communicate clearly with cross-functional partners across the company. I have effectively managed the execution of strategic engineering objectives using tools such as Smartsheet and Lucid Planner, resulting in significant achievements like increasing Intel NUC device production from \$4 million to \$6 million over 10 years and orchestrating collaboration among 13 cross-functional teams to achieve a 27% revenue increase over three quarters.
+My extensive experience includes serving as a Business/Data Analyst, where I successfully lead complex, multi-disciplinary projects from start to finish --- working with stakeholders to plan requirements, manage project schedules, identify risks, and communicate clearly with cross-functional partners across the company. I have effectively managed the execution of strategic engineering objectives using tools such as Smartsheet and Lucid Planner, resulting in significant achievements like increasing Intel NUC device production from \$4 million to \$6 million over 10 years and orchestrating collaboration among 13 cross-functional teams to achieve a 33% revenue increase over three quarters.
 
 In my roles, I have showcased my proficiency in managing intricate compensation data processes and reporting at both Lam Research and Intel Corporation. I utilized tools like Power BI and Tableau and developed dashboards using languages such as R, Python, and SQL. As a Program Manager at Intel, I led a team to achieve record-breaking milestones in product introductions. My background also includes serving in the United States Navy, where I managed extensive equipment inventories and led multiple deployments. Additionally, I hold an MBA from Willamette University, where I consulted for the Boys & Girls Club, saving them over \$500K.
 
