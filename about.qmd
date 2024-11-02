@@ -31,13 +31,18 @@ Master of Business Administration \| August 2019
 
 ##### **University of Arizona** \| Tucson, AZ
 
-B.S in Business Administration \| December 2011
+B.S in Public Administration \| December 2011
 
 ## Experience
 
+#### **Astranis Space Technologies**
+
+| Business Intelligence Developer
+| Jul 2024 - Dec 2024
+
 #### **Lam Research**
 
-| Senior Business Analyst (Contract)
+| Senior Business Analyst 
 | November 2023 - Jun 2024
 
 #### **Intel Corporation**
@@ -54,7 +59,7 @@ B.S in Business Administration \| December 2011
 
 #### ***Technical Skills***
 
-| SQL, Python, DAX, R, SAP, Git, HTML, PowerBI, Tableau, JavaScript, Microsoft 365, Smartsheet, Lucid Planner
+| SQL, Python, DAX, R, SAP, Git, HTML, PowerBI, Tableau, JavaScript, Microsoft 365, Smartsheet, Lucid Planner, AWS, Salesforce
 
 #### ***Certifications***
 
@@ -66,7 +71,7 @@ B.S in Business Administration \| December 2011
 
 #### ***Soft Skills***
 
-| Strategic Planning, Program Management, Team Leadership, Data Analysis, Visualization, Communication, Stakeholder Management
+| Strategic Planning, Project Management, Program Management, Product Strategy & Delivery, Business Intelligence, Business Operations, Team Leadership, Data Analytics & AI Model Deployment, Visualization, Stakeholder Management, Communication, Time Management, Mentoring, Cross-Functional Leadership, Problem Solving, Customer Service
 
 ## About Me
 
