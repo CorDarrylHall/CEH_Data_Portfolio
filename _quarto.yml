@@ -21,6 +21,8 @@ website:
     left:
       - href: about.qmd
         text: CorDarryl E. Hall
+      - href: Testimonials.qmd
+        text: Testimonials
     right:
       - href: Services.qmd
         text: Services
