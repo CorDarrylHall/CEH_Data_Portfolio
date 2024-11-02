@@ -15,7 +15,6 @@ format:
             gtag('config', 'G-RHP4L2N0TE');
           </script>
 listing:
-  type: grid
   contents: posts
   categories: true
   sort-ui: false
