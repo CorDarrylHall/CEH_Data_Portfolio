@@ -2,10 +2,7 @@
 title: "Analysis of Math Students in Oregon"
 image: Math.jpg
 categories: 
-  - Data Science
-  - Data Analysis
-  - Data Visualization
-  - Statistical Analysis
+  - Data Analysis Project
 ---
 
 ```{=html}

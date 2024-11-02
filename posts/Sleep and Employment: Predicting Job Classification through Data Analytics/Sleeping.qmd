@@ -2,14 +2,7 @@
 title: "Sleep and Employment: Predicting Job Classification through Data Analytics"
 image: sleep.png
 categories:
-  - Python
-  - Data Analysis
-  - Data Science
-  - Data Visualization
-  - Trend Analysis
-  - Machine Learning
-  - Random Forest Classification
-  - SVM Classifier
+  - Predictive Analytics
 ---
 
 ```{=html}
@@ -95,7 +88,6 @@ sleep = pd.read_csv(file_path)
 
 ```
 
-
 ```{ipython}
 import pandas as pd
 import seaborn as sns
@@ -116,7 +108,6 @@ fig = ax.get_figure()
 ```
 
 ![](figure7.png)
-
 
 ## Correlation of Numeric Variables
 
@@ -141,7 +132,6 @@ plt.show()
 ```
 
 ![](figure_1.png)
-
 
 ## Occupation By The Numbers
 
@@ -176,7 +166,6 @@ sleep["Occupation_Group"] = sleep.apply(occupation_group, axis=1)
 ```
 
 ![](figure8.png)
-
 
 ## Look at distribution based on Age
 
@@ -233,7 +222,6 @@ plt.show()
 
 ![](figure_3.png)
 
-
 ## Quality of Sleep
 
 ```{ipython}
@@ -286,7 +274,6 @@ pivot_data
 ```
 
 ![](figure11.png)
-
 
 ```{ipython}
 import pandas as pd
@@ -514,8 +501,7 @@ plt.show()
 
 ```
 
-![](figure_5.png)
-## Summary
+![](figure_5.png) \## Summary
 
 This study delved into the relationship between sleep patterns, job classification, and other relevant factors to accurately predict job roles. By leveraging data analytics and machine learning techniques, we aimed to optimize workforce planning and develop personalized workplace strategies.
 

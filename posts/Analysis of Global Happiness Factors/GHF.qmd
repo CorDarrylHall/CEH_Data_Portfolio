@@ -2,11 +2,6 @@
 title: "Analysis of Global Happiness Factors"
 image: ghf.png
 categories:
-  - Python
-  - Data Analysis
-  - Data Science
-  - Data Visualization
-  - Trend Analysis
   - Machine Learning
 ---
 
@@ -50,15 +45,12 @@ nav {
 
 This project aims to analyze the factors contributing to the happiness of different countries using the World Happiness Report data from 2016. The analysis focuses on identifying key metrics and their impact on the overall happiness scores of countries.
 
-
 ```{ipython}
 import pandas as pd
 data = pd.read_csv("/Users/Shared/Python/Mid-review 26-6-2023/world_happiness_2016.csv")
 
 
 ```
-
-
 
 ```{ipython}
 import pandas as pd
@@ -68,17 +60,18 @@ print(data.describe())
 ```
 
 ## Key Statistics:
+
 The summary statistics provide insights into the distribution of happiness scores and related factors across different countries.
 
-- Happiness Rank ranges from 1 to 157.
-- Happiness Score ranges from 2.905 to 7.526.
-- Economy (GDP per Capita) ranges from 0 to 1.82427.
-- Family ranges from 0 to 1.18326.
-- Health (Life Expectancy) ranges from 0 to 0.95277.
-- Freedom ranges from 0 to 0.60848.
-- Trust (Government Corruption) ranges from 0 to 0.50521.
-- Generosity ranges from 0 to 0.81971.
-- Dystopia Residual ranges from 0.81789 to 3.83772.
+-   Happiness Rank ranges from 1 to 157.
+-   Happiness Score ranges from 2.905 to 7.526.
+-   Economy (GDP per Capita) ranges from 0 to 1.82427.
+-   Family ranges from 0 to 1.18326.
+-   Health (Life Expectancy) ranges from 0 to 0.95277.
+-   Freedom ranges from 0 to 0.60848.
+-   Trust (Government Corruption) ranges from 0 to 0.50521.
+-   Generosity ranges from 0 to 0.81971.
+-   Dystopia Residual ranges from 0.81789 to 3.83772.
 
 ## Correlation of Numeric Variables
 
@@ -112,14 +105,14 @@ plt.show()
 
 ## Insights and Findings:
 
-- Countries with higher GDP per Capita generally have higher Happiness Scores.
+-   Countries with higher GDP per Capita generally have higher Happiness Scores.
 
-- Strong family support and better health (life expectancy) are positively correlated with higher Happiness Scores.
+-   Strong family support and better health (life expectancy) are positively correlated with higher Happiness Scores.
 
-- Freedom and Trust in Government also play significant roles in determining happiness levels.
+-   Freedom and Trust in Government also play significant roles in determining happiness levels.
 
-- Generosity and Dystopia Residual show moderate to low correlation with Happiness Scores.
+-   Generosity and Dystopia Residual show moderate to low correlation with Happiness Scores.
 
-## **Conclusion:** 
+## **Conclusion:**
 
 This project provides a comprehensive analysis of the factors influencing happiness across different countries. The findings highlight the importance of economic stability, family support, health, and governance in enhancing the happiness of populations. The visualizations and statistical analyses offer valuable insights that can inform policymakers and researchers in their efforts to improve global well-being.

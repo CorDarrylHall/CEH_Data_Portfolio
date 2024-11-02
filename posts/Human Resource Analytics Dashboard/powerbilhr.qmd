@@ -11,13 +11,7 @@ page-layout: article
 title-block-banner: false 
 image: Pbi5.png
 categories: 
-  - Power BI
-  - Data Visualization
-  - KPI Analysis
-  - HR Analytics
-  - Employee Retention
-  - Turnover Analysis
-  - Data-Driven Decision Making
+  - People/HR Analytics
 ---
 
 ```{=html}

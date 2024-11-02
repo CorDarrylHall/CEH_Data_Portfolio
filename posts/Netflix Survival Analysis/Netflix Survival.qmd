@@ -2,12 +2,6 @@
 title: "Netflix Survival Analysis"
 image: netflix.jpeg
 categories: 
-  - Data Analysis
-  - Content Strategy
-  - Survival Analysis
-  - Data Visualization
-  - Predictive Modeling
-  - Data Science
   - Audience Segmentation
 ---
 

@@ -2,11 +2,6 @@
 title: "Heart Disease Analysis"
 image: hda.jpeg
 categories:
-  - Python
-  - Data Analysis
-  - Data Science
-  - Data Visualization
-  - Trend Analysis
   - Machine Learning
 ---
 
@@ -50,7 +45,6 @@ nav {
 
 This project aims to analyze and visualize heart disease data to uncover patterns and insights related to age, cholesterol levels, maximum heart rate, and resting blood pressure. The analysis includes creating histograms and heatmaps to highlight correlations and trends within the dataset.
 
-
 ```{ipython}
 import pandas as pd
 
@@ -60,8 +54,6 @@ print(data.describe())
 
 
 ```
-
-
 
 ```{ipython}
 import matplotlib.pyplot as plt
@@ -81,8 +73,6 @@ plt.grid(True)
 plt.show()
 
 ```
-
-
 
 ```{ipython}
 import matplotlib.pyplot as plt
@@ -151,12 +141,12 @@ plt.show()
 
 ## Insights and Findings:
 
-- Cholesterol Distribution: The histogram shows that middle-aged individuals have a higher frequency of elevated cholesterol levels, whereas older individuals tend to have higher cholesterol levels overall.
+-   Cholesterol Distribution: The histogram shows that middle-aged individuals have a higher frequency of elevated cholesterol levels, whereas older individuals tend to have higher cholesterol levels overall.
 
-- Correlation Analysis: The heatmap indicates a visual correlation between resting blood pressure and maximum heart rate, allowing for a better understanding of how these variables interact.
+-   Correlation Analysis: The heatmap indicates a visual correlation between resting blood pressure and maximum heart rate, allowing for a better understanding of how these variables interact.
 
-- Enhanced Visualizations: The comparative heatmaps with different color schemes provide multiple perspectives on the data, making it easier to identify patterns and outliers.
+-   Enhanced Visualizations: The comparative heatmaps with different color schemes provide multiple perspectives on the data, making it easier to identify patterns and outliers.
 
-## **Conclusion:** 
+## **Conclusion:**
 
 This project provides a detailed analysis and visualization of heart disease data, highlighting key patterns and relationships between age, cholesterol levels, maximum heart rate, and resting blood pressure. The use of histograms and heatmaps allows for a clear and intuitive presentation of the data, facilitating better understanding and interpretation of the results.

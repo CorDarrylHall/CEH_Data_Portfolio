@@ -2,11 +2,7 @@
 title: "Expected Population Growth (Inspired by TidyTuesday dataset)"
 image: ttue.jpeg
 categories: 
-  - Data Visualization
-  - Statistical Analysis
-  - Data Science
-  - Data Analysis
-  - Interactive Analytics
+  - Predictive Analytics
 ---
 
 ```{=html}

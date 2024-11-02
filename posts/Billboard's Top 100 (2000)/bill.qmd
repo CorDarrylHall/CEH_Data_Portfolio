@@ -2,11 +2,7 @@
 title: "Billboard Top 100's in 2000"
 image: bill.jpeg
 categories:
-  - Time Series Analysis
-  - Data Analysis
-  - Data Science
-  - Data Visualization
-  - Trend Analysis
+  - Data Analysis Project
 ---
 
 ```{=html}

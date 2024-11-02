@@ -3,9 +3,6 @@ title: "Wine & Feature Engineering"
 image: wine.png
 categories: 
   - Machine Learning
-  - Data Analysis
-  - Data Science
-  - Feature Engineering
   - Predictive Modeling
 ---
 

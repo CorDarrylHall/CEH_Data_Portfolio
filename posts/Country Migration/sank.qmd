@@ -2,12 +2,7 @@
 title: "Country Migration"
 image: country.jpeg
 categories: 
-  - Data Visualization
-  - Interactive Visualization
-  - Sankey Diagrams
-  - Data Analysis
-  - Data Science
-  - Statistical Analysis
+  - Data Analysis Project
 ---
 
 ```{=html}

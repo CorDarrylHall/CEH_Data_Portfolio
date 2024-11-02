@@ -2,11 +2,7 @@
 title: "Predicting Bank Customer Churn"
 image: pbc.jpeg
 categories: 
-  - Machine Learning
-  - Data Analysis
-  - Data Science
-  - Feature Engineering
-  - Predictive Modeling
+  - Predictive Analytics
 ---
 
 ```{=html}
@@ -60,7 +56,6 @@ bank = read_rds("/Users/Shared/Data 505/BankChurners.rds")
 
 ```
 
-
 ```{r}
 # Create additional features
 banko <- bank %>%
@@ -85,8 +80,6 @@ head(prc)
 
 ```
 
-
-
 ```{r}
 ctrl <- trainControl(method = "cv", number = 3, classProbs = TRUE, summaryFunction = twoClassSummary)
 set.seed(504)
@@ -110,14 +103,12 @@ confusionMatrix(predict(fit, test), factor(test$Churn))
 
 ```
 
-
 ```{r, warning=FALSE, message=FALSE}
 print(fit)
 print(fit$bestTune)
 
 
 ```
-
 
 ```{r, warning=FALSE, message=FALSE}
 set.seed(1504)

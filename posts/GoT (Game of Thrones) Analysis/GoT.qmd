@@ -2,17 +2,7 @@
 title: "Survival Analysis of Game of Thrones Characters"
 image: got.jpeg
 categories: 
-  - Survival Analysis
-  - Game of Thrones
-  - Narrative Analysis
-  - Statistical Modeling
-  - Data Visualization
-  - Cox Proportional Hazards Model
-  - Kaplan-Meier Estimator
-  - Risk Analysis
-  - Storytelling Insights
-  - Plot Dynamics
-  - Thematic Analysis
+  - Machine Learning
 ---
 
 ```{=html}
