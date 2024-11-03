@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/posts/Recruitment Analytics/recruit.html",
+    "items": []
+  },
+  {
     "listing": "/posts/Human Resource Analytics Dashboard/powerbilhr.html",
     "items": []
   },
@@ -28,6 +32,7 @@
       "/posts/Predicting Bank Churn/pbc.html",
       "/posts/Sleep and Employment: Predicting Job Classification through Data Analytics/Sleeping.html",
       "/posts/GoT (Game of Thrones) Analysis/GoT.html",
+      "/posts/Recruitment Analytics/recruit.html",
       "/posts/Wine /Wine.html"
     ]
   },

@@ -59,8 +59,9 @@ For open positions, tracking days open and fill rates by job and department shed
 
 ## Talent Summary 
 
-![](images/Screenshot 2024-11-03 at 12.00.36 AM.png)
+![](v1.png)
 
+\
 In examining ***hiring velocity***, we measure the speed at which our hiring process advances, capturing how quickly candidates move through the pipeline and highlighting variations in recruitment pace over time. This data helps us understand how efficiently we\'re meeting hiring demands in different periods.
 
 We also assess ***total hires*** within the analysis period, capturing the overall volume of successful hires to quantify recruitment achievements. Alongside this, we tally the ***total offers extended***, providing a breakdown of ***accepted versus declined offers***, and analyze our ***offer acceptance rate*** to determine the proportion of offers that result in a successful hire. This rate is a critical indicator of the appeal of our offers and the competitiveness of our recruitment process.
@@ -73,7 +74,7 @@ Lastly, hires by department showcase the ***distribution of hires***, indicating
 
 ## Passthrough Rates by Pipeline Stage
 
-![](images/Screenshot 2024-11-03 at 12.32.31 AM.png)
+![](v2.png)
 
 The analysis of ***passthrough rates*** ***by pipeline stage*** reveals how candidates progress through each hiring phase across departments, offering insights into departmental performance and identifying any process bottlenecks. Starting from the ***Recruiter Screen***, candidates advance through stages such as ***Video Interview 1, Video Interview 2,*** and finally, the ***Onsite*** interview. Each stage's passthrough rate has been calculated for every department, showing how effectively each department moves candidates forward.
 
@@ -83,7 +84,7 @@ This comparison of departmental performance to overall averages provides a roadm
 
 ## Total Openings by Department & Job Role
 
-![](images/Screenshot 2024-11-03 at 9.40.03 AM-01.png)
+![](v3.png)
 
 In analyzing ***total openings by department and job role***, we focused on the status of each position, whether ***open or closed***, to better understand hiring demand and progress across the organization. For each department and job, we summarized the ***total number of openings***, distinguishing between those that are actively recruiting and those that have been filled. This breakdown revealed the distribution of hiring needs by team and highlighted departments with a significant number of open roles still awaiting suitable candidates.
 
@@ -93,13 +94,13 @@ Lastly, we calculated the ***fill rate*** for each department and job, identifyi
 
 ## Offer Accepts & Declines by Department/Team
 
-![](images/Screenshot 2024-11-03 at 9.46.47 AM.png)
+![](v4.png)
 
 The ***analysis of offer outcomes*** by department reveals key insights into both ***acceptance and decline patterns***, allowing us to assess each team\'s success in converting offers into accepted hires. By examining the counts of offers accepted and declined within each department, we can identify trends in candidate decision-making and gauge the appeal of various roles and departments. This breakdown highlights which teams have higher acceptance rates, potentially reflecting effective negotiation strategies, competitive offers, or strong alignment between candidate expectations and role requirements. Conversely, departments with lower acceptance rates may benefit from a closer look at common ***decline reasons***, such as compensation, role alignment, or team dynamics, to refine their approach and increase offer acceptance.
 
 The ***offer acceptance rate*** calculated per department offers a deeper level of insight, serving as an indicator of each team\'s effectiveness in securing top talent. High acceptance rates suggest strong candidate satisfaction and alignment with the opportunities provided, while lower rates might indicate areas where adjustments in offer packages, role clarity, or candidate experience could lead to better results. By isolating these metrics for each team, we gain a clearer view of department-specific dynamics and can identify actionable strategies to enhance overall recruitment success. This analysis ultimately provides a data-driven foundation for refining offer processes, improving candidate experience, and ensuring a stronger alignment between organizational needs and the talent brought on board.
 
-![](images/Screenshot 2024-11-03 at 9.50.24 AM.png)
+![](v5.png)
 
 In examining the reasons behind offer declines across teams, we noticed a few consistent trends that shed light on the key factors influencing candidates' decisions to decline. Compensation emerged as a common factor, with several candidates citing salary expectations that were not fully met. Additionally, some candidates expressed concerns over role alignment, suggesting that the job responsibilities or growth potential did not fully align with their career aspirations. Location also played a significant role, particularly for candidates who would need to relocate or travel frequently.
 
@@ -107,7 +108,7 @@ When analyzing declines by team, distinct patterns surfaced that suggest specifi
 
 ## Time to Fill/Time to Hire Over Time and by Department
 
-![](images/Screenshot 2024-11-03 at 12.52.48 AM.png)
+![](v6.png)
 
 Over time, tracking both ***time to fill*** and *t**ime to hire*** reveals essential insights into the efficiency of the recruitment process and highlights trends in how quickly roles are filled across departments. By analyzing these metrics at the departmental level, we can observe where hiring timelines may be improving, remaining consistent, or facing setbacks. For example, departments with decreasing ***time-to-fill*** trends may indicate streamlined processes, efficient candidate sourcing, or refined interview stages. Conversely, departments where ***time-to-fill*** has increased may suggest challenges in sourcing, prolonged interview phases, or other factors affecting the hiring speed.
 
