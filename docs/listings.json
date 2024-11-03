@@ -33,22 +33,6 @@
   },
   {
     "listing": "/Testimonials.html",
-    "items": [
-      "/posts/Analysis of Global Happiness Factors/GHF.html",
-      "/posts/Oregon Math Analysis/ORMATH.html",
-      "/posts/Veteran Compensation Benefits/VCB.html",
-      "/posts/Billboard's Top 100 (2000)/bill.html",
-      "/posts/Country Migration/sank.html",
-      "/posts/Expected Population Growth (Inspired by TidyTuesday dataset)/le.html",
-      "/posts/Heart Disease Analysis/hda.html",
-      "/posts/Human Resource Analytics Dashboard/powerbilhr.html",
-      "/posts/Labor Utilization Dashboard/powerbila.html",
-      "/posts/Netflix Survival Analysis/Netflix Survival.html",
-      "/posts/Offer Analysis Dashboard/powerbi.html",
-      "/posts/Predicting Bank Churn/pbc.html",
-      "/posts/Sleep and Employment: Predicting Job Classification through Data Analytics/Sleeping.html",
-      "/posts/GoT (Game of Thrones) Analysis/GoT.html",
-      "/posts/Wine /Wine.html"
-    ]
+    "items": []
   }
 ]

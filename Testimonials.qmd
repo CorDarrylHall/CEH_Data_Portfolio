@@ -1,5 +1,5 @@
 ---
-title: "CorDarryl Hall's Data Portfolio"
+title: "Coming Soon"
 format:
   html:
     includes:
@@ -16,7 +16,7 @@ format:
           </script>
 listing:
   type: grid
-  contents: posts
+  contents: n/a
   categories: true
   sort-ui: false
   filter-ui: false
