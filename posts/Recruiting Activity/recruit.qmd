@@ -10,7 +10,7 @@ listing:
   filter-ui: false
 page-layout: article
 title-block-banner: false 
-image: Tad2.png
+image: Td1.png
 categories: 
   - People/HR Analytics
 ---
