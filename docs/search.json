@@ -711,7 +711,7 @@
     "href": "about.html#experience",
     "title": "CorDarryl E. Hall",
     "section": "Experience",
-    "text": "Experience\n\nAstranis Space Technologies\nBusiness Intelligence Developer\nJul 2024 - Current\n\n\nLam Research\nSenior Business Analyst\nNovember 2023 - Jun 2024\n\n\nMarriott International\nSenior Operations Program Manager\nFebruary 2023 - November 2023\n\n\nIntel Corporation\nSenior Operations Program Manager\nMay 2018 - February 2023\n\n\nU.S.Navy\nMachinist/Logistics Specialist\nSeptember 2012 - June 2020"
+    "text": "Experience\n\nAstranis Space Technologies\nSenior Business Intelligence Developer\nJul 2024 - Current\n\n\nLam Research\nSenior Business Analyst\nNovember 2023 - Jun 2024\n\n\nMarriott International\nSenior Manager Data & Reporting\nFebruary 2023 - November 2023\n\n\nIntel Corporation\nSenior Business Analyst\nMay 2018 - February 2023\n\n\nU.S.Navy\nMachinist/Logistics Specialist\nSeptember 2012 - June 2020"
   },
   {
     "objectID": "about.html#skills-certifications",
@@ -730,8 +730,15 @@
   {
     "objectID": "Testimonials.html",
     "href": "Testimonials.html",
-    "title": "Coming Soon",
+    "title": "Testimonials",
     "section": "",
-    "text": "No matching items"
+    "text": "“Working with CorDarryl transformed our approach to data analytics. As a Business Intelligence Developer at Astranis, he built several dashboards that streamlined our HR analytics and offered actionable insights through AWS Amazon Redshift. The dashboards CorDarryl created are not only efficient but have also made our data more accessible and meaningful, enabling faster, data-driven decisions. CorDarryl’s expertise in BI and attention to detail have been invaluable to our team!” - Bryan Hong, Director of Talent Acquisition"
+  },
+  {
+    "objectID": "Testimonials.html#astranis-space-technologies",
+    "href": "Testimonials.html#astranis-space-technologies",
+    "title": "Testimonials",
+    "section": "Astranis Space Technologies",
+    "text": "Astranis Space Technologies\n“Working with CorDarryl transformed our approach to data analytics. As a Business Intelligence Developer at Astranis, he built several dashboards that streamlined our HR analytics and offered actionable insights through AWS Amazon Redshift. The dashboards CorDarryl created are not only efficient but have also made our data more accessible and meaningful, enabling faster, data-driven decisions. CorDarryl’s expertise in BI and attention to detail have been invaluable to our team!” - Bryan Hong, Director of Talent Acquisition"
   }
 ]

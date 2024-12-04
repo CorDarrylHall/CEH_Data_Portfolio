@@ -1,5 +1,5 @@
 ---
-title: "Coming Soon"
+title: "Testimonials"
 format:
   html:
     includes:
@@ -35,3 +35,8 @@ nav {
 }
 </style>
 ```
+![](ast.jpeg)
+
+## **Astranis Space Technologies**
+
+"Working with CorDarryl transformed our approach to data analytics. As a Business Intelligence Developer at Astranis, he built several dashboards that streamlined our HR analytics and offered actionable insights through AWS Amazon Redshift. The dashboards CorDarryl created are not only efficient but have also made our data more accessible and meaningful, enabling faster, data-driven decisions. CorDarryl's expertise in BI and attention to detail have been invaluable to our team!" - Bryan Hong, Director of Talent Acquisition
